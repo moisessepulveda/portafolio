@@ -1,0 +1,52 @@
+version: '3'
+
+services:
+  web:
+    restart: always
+    build: ./porfolio
+    expose:
+      - "8000"
+    links:
+      - postgres:postgres
+      - redis:redis
+    volumes:
+      - web-django:/app
+      - web-static:/app/static
+    env_file: .env
+    environment:
+      DEBUG: 'true'
+    command: bash -c "/application/manage.py collectstatic --noinput;/usr/local/bin/gunicorn porfolio.wsgi:application -w 2 -b :8000"
+    # command: /usr/local/bin/gunicorn porfolio.wsgi:application -w 2 -b :8000
+
+  nginx:
+    restart: always
+    build: ./nginx/
+    ports:
+      - "8000:80"
+    volumes:
+      - web-static:/www/static
+    links:
+      - web:web
+
+  postgres:
+    restart: always
+    image: postgres:latest
+    ports:
+      - "5435:5432"
+    env_file: .postgres_env
+    volumes:
+      - pgdata:/var/lib/postgresql/data/
+
+  redis:
+    restart: always
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    volumes:
+      - redisdata:/data
+
+volumes:
+  web-django:
+  web-static:
+  pgdata:
+  redisdata:
