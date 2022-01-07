@@ -1,4 +1,4 @@
-## Professional portfolio
+# Professional portfolio
 
 ### welcome to my personal portfolio web page repository
 
