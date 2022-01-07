@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  {% load static %}
+  {% load wagtailcore_tags wagtailimages_tags home_extras %}
+    <link rel="icon" href="{% static 'home/assets/img/techbrain.png' %}"/>
+
+  <title>Moisés Sepúlveda</title>
+  <link rel="stylesheet" href="{% static 'home/assets/css/color.css' %}">
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono|Inconsolata" rel="stylesheet">
+  <link href="https://cdn.materialdesignicons.com/2.0.46/css/materialdesignicons.min.css" rel="stylesheet">
+</head>
+<body>
+
+{# Switcher #}
+  <div class="style-switcher">
+    <span class="style-switcher__control"></span>
+    <div class="style-switcher__list">
+      <a class="style-switcher__link style-switcher__link--color"></a>
+      <a class="style-switcher__link style-switcher__link--mono"></a>
+    </div>
+  </div>
+{# Switcher #}
+
+{# Main menu #}
+  <div class="menu">
+    <div class="container">
+      <div class="row">
+        <div class="menu__wrapper d-none d-lg-block col-md-12">
+          <nav class="">
+            <ul>
+              <li><a href="#hello">Hola</a></li>
+              <li><a href="#resume">Curriculum</a></li>
+              <li><a href="#portfolio">Proyectos</a></li>
+              <li><a href="#testimonials">Testimonios</a></li>
+              <li><a href="#blog">Cursos</a></li>
+              <li><a href="#contact">Contacto</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="menu__wrapper col-md-12 d-lg-none">
+          <button type="button" class="menu__mobile-button">
+            <span><i class="fa fa-bars" aria-hidden="true"></i></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+{# Main menu #}
+
+{#  Mobile menu  #}
+  <div class="mobile-menu d-lg-none">
+    <div class="container">
+      <div class="mobile-menu__close">
+        <span><i class="mdi mdi-close" aria-hidden="true"></i></span>
+      </div>
+      <nav class="mobile-menu__wrapper">
+        <ul>
+          <li><a href="#hello">Hello</a></li>
+          <li><a href="#resume">Resume</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#testimonials">testimonials</a></li>
+          <li><a href="#blog">blog</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+{#  Mobile menu  #}
+
+{# Header #}
+{% image page.hero_picture original as tmp_photo %}
+  <header class="main-header" style="background-image: url({{ tmp_photo.url }})">
+    <div class="container">
+      <div class="row personal-profile">
+        <div class="col-md-4 personal-profile__avatar">
+            {% image page.hero_picture fill-350x400 attr="avatar-img" %}
+        </div>
+        <div class="col-md-8">
+          <p class="personal-profile__name">{{ page.name|title }}</p>
+          <p class="personal-profile__work">{{ page.profession }}</p>
+          <div class="personal-profile__contacts">
+            <dl class="contact-list contact-list__opacity-titles">
+              <dt>Edad:</dt>
+              <dd>{{ page.age }}</dd>
+              <dt>Teléfono:</dt>
+              <dd><a href="tel:{{ page.phone|cut:" "|cut:"+" }}">{{ page.phone }}</a></dd>
+              <dt>Correo electrónico:</dt>
+              <dd><a href="mailto: {{page.email}}">{{ page.email}}</a></dd>
+              <dt>Dirección:</dt>
+              <dd>{{ page.address }}</dd>
+            </dl>
+          </div>
+          <p class="personal-profile__social">
+          {% if page.github_link %}
+            <a href="{{ page.github_link }}" target="_blank"><i class="fa fa-github"></i></a>
+          {% endif %}
+
+          {% if page.linkedin_link %}
+          <a href="{{ page.linkedin_link }}" target="_blank"><i class="fa fa-linkedin-square"></i></a>
+          {% endif %}
+
+          {% if page.facebook_link %}
+          <a href="{{ page.facebook_link }}" target="_blank"><i class="fa fa-facebook-square"></i></a>
+          {% endif %}
+
+            {% if page.youtube_link %}
+                <a href="{{ page.youtube_link }}" target="_blank"><i class="fa fa-youtube-square"></i></a>
+            {% endif %}
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+{# Header #}
+
+{# Hello #}
+  <section id="hello" class="container section">
+    <div class="row">
+      <div class="col-md-10">
+        <h2 id="hello_header" class="section__title">{{ page.presentation_title }}</h2>
+        <p class="section__description">
+            {{page.presentation_desc|capfirst}}
+        </p>
+        <a href="{{ page.cv_file.url }}" target="_blank" class="section_btn site-btn"><img src="{% static 'home/assets/img/img_btn_icon.png' %}" alt="">Descargar Curriculum</a>
+      </div>
+    </div>
+  </section>
+{# Hello #}
+
+  <hr>
+
+{# Resume #}
+  <section id="resume" class="container section">
+    <div class="row">
+      <div class="col-md-10">
+        <h2 id="resume_header" class="section__title">{{ page.resume_title }}</h2>
+        <p class="section__description">
+            {{ page.resume_body | richtext }}
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8 section__resume resume-list">
+        <h3 class="resume-list_title">Educación</h3>
+        {% for education in page.education %}
+
+           <div class="resume-list__block">
+            <p class="resume-list__block-title">{{education.value.university|title}}
+            </p>
+            <p class="resume-list__block-date">{{ education.value.period}}</p>
+            <p>
+                {{education.value.title|capfirst}}
+            </p>
+          </div>
+        {% endfor %}
+       
+       
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8 section__resume resume-list">
+        <h3 class="resume-list_title">Trayectoría profesional</h3>
+        
+        {% for j in page.job_history %}
+            <div class="resume-list__block">
+                <p class="resume-list__block-title">{{j.value.enterprise}}</p>
+                <p class="resume-list__block-date">{{j.value.period}}</p>
+                <p>
+                {{j.value.description|capfirst}}
+                </p>
+            </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="row section__resume progress-list js-progress-list">
+      <div class="col-md-12">
+        <h3 class="progress-list__title">Habilidades</h3>
+      </div>
+      <div class="col-md-5 mr-auto">
+        {% for s in page.skills%}
+            <div class="progress-list__skill">
+            <p>
+              <span class="progress-list__skill-title">{{s.value.technology}}</span>
+              <span class="progress-list__skill-value">{{s.value.percentage}}%</span>
+            </p>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" >
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+       
+        
+    </div>
+  </section>
+{# Resume #}
+
+{# Portfolio #}
+  <section id="portfolio" class="container section">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 id="portfolio_header" class="section__title">{{ page.project_title }}</h2>
+      </div>
+    </div>
+    <div class="row portfolio-menu">
+      <!-- <div class="col-md-12">
+        <nav>
+          <ul>
+            <li><a href="" data-portfolio-target-tag="all">all</a></li>
+            <li><a href="" data-portfolio-target-tag="mobile apps">mobile apps</a></li>
+            <li><a href="" data-portfolio-target-tag="web-sites">web-sites</a></li>
+            <li><a href="" data-portfolio-target-tag="landing-pages">landing pages</a></li>
+          </ul>
+        </nav>
+      </div> -->
+    </div>
+    <div class="portfolio-cards">
+        {% for project in page.projects %}
+      <div class="row project-card" data-toggle="modal" data-target="#portfolioModal{{project.id}}" data-portfolio-tag="web-sites">
+        <div class="col-md-6 col-lg-5 project-card__img">
+            {% image project.value.image fill-460x350 attr="project-img" %}
+        </div>
+        <div class="col-md-6 col-lg-7 project-card__info">
+          <h3 class="project-card__title">{{ project.value.title|title }} </h3>
+          <p class="project-card__description">
+            {{project.value.summary|capfirst}}
+          </p>
+
+          <p class="project-card__stack">Técnologías utilizadas:</p>
+          <ul class="tags">
+              
+            {% for s in project.value.stack_used|split:"," %}
+                <li>{{s}}</li>
+            {% endfor %}
+          
+          </ul>
+          <!--<a href="" class="project-card__link">www.superapp.com</a>-->
+        </div>
+      </div>
+      {% endfor %}
+    
+    </div>
+  </section>
+{# Portfolio #}
+
+  <div id="testimonials" class="section">
+    <div class="background slider-carousel" style="background-image: url({% static 'home/assets/img/img_bg_main.jpg' %});">
+      <div class="container">
+        <div id="carouselTestimonials" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+              {% for t in page.testimonials %}
+              <li data-target="#carouselTestimonials" data-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %}></li>
+              {% endfor %}
+          </ol>
+          <div class="carousel-inner" role="listbox">
+              {% for t in page.testimonials %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                <div class="row">
+                    <div class="col-md-10 col-sm-10 col-10 mr-auto ml-auto">
+                    <p class="slider-carousel__title">{{ t.value.title }}</p>
+                    <p class="slider-carousel__caption">Proyecto: {{ t.value.project }}</p>
+                    <hr>
+                    <p class="slider-carousel__description">{{ t.value.message|capfirst }}</p>
+                    </div>
+                </div>
+                </div>
+            {% endfor %}
+           
+          </div>
+          <a class="carousel-control-prev" href="#testimonials" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#testimonials" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+          <div class="slider-carousel__circle">
+            <p><i class="fa fa-quote-right" aria-hidden="true"></i></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{# Blog #}
+  <section id="blog" class="container section">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 id="blog_header" class="section__title">{{ page.courses_title|title }}</h2>
+      </div>
+    </div>
+    <div class="row post-cards">
+        {% for c in page.courses %}
+      <div class="col-md-4">
+        <a href="{{ c.value.link }}">
+          <div class="post-cards__card">
+            <div class="post-cards__img">
+                {% image c.value.image fill-350x350-c100 alt="blog_img" %}
+            </div>
+            <div class="post-cards__info">
+              <p class="post-cards__date">{{ c.value.technology|upper }} </p>
+              <h3 class="post-cards_title">{{ c.value.title|upper}}</h3>
+              <p class="post-cards_description">
+                  {{ c.value.summary|capfirst }}
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+      {% endfor %}
+      
+    </div>
+  </section>
+{# Blog #}
+
+{# Contact #}
+
+  <div class="background" style="background-image: url({% static 'home/assets/img/img_bg_main.jpg' %})">
+    <div id="contact" class="container section">
+      <div class="row">
+        <div class="col-md-12">
+          <p id="contacts_header" class="section__title">Contáctame_</p>
+        </div>
+      </div>
+      <div class="row contacts">
+        <div class="col-md-5 col-lg-4">
+          <div class="contacts__list">
+            <dl class="contact-list">
+              <dt>Teléfono:</dt>
+              <dd><a href="tel:{{ page.phone|cut:" "|cut:"+" }}">{{ page.phone }}</a></dd>
+              <dt>Correo:</dt>
+              <dd><a href="mailto:{{ page.email|lower }}">{{ page.email|lower }}</a></dd>
+            </dl>
+          </div>
+          <div class="contacts__social">
+            <ul>
+              {% if page.facebook_link %}
+              <li><a href="{{ page.facebook_link }}">Facebook</a></li>
+              {% endif %}
+              
+              {% if page.linkedin_link %}
+              <li><a href="{{ page.linkedin_link }}">Linkedin</a></li>
+              {% endif %}
+
+              {% if page.github_link %}
+              <li><a href="{{ page.github_link }}">GitHub</a></li>
+              {% endif %}
+              {% if page.youtube_link %}
+              <li><a href="{{ page.youtube_link }}">Youtube</a></li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-7 col-lg-5">
+          <div class="contacts__form">
+            <p class="contacts__form-title">o escribeme por Aquí!_</p>
+                <form action="{% pageurl page %}" method="POST">
+                    {% csrf_token %}
+                    {% for f in form %}
+                        <div class="form-group">
+                            {{f}}
+                            <span class="form-validation"></span>
+                            <span class="form-invalid-icon"><i class="mdi mdi-close" aria-hidden="true"></i></span>
+                        </div>
+                    {% endfor %}
+                    <button class="site-btn site-btn--form" type="submit" value="">Enviar</button>
+                </form>
+          </div>
+          <div class="footer">
+            <p>© {% now "Y" %} Moisés Sepúlveda - Sitio construido utilizando DJANGO WAGTAIL </p>
+
+           
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{# Contact #}
+
+{#  Portfolio Modal  #}
+{% for project in page.projects %}
+<div class="modal fade portfolio-modal" id="portfolioModal{{project.id}}" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body col-md-11 col-lg-9 ml-auto mr-auto">
+        <p class="portfolio-modal__title">{{ project.value.title|title }}</p>
+        {% image project.value.image fill-600x450-c100 alt="project-img" class="portfolio-modal__img" alt="modal_img" %}
+        <p class="portfolio-modal__description">
+            {{ project.value.descripcion|capfirst}}
+        </p>
+        {% comment "enlace" %}
+        <div class="portfolio-modal__link">
+          <a href="">www.superapp.com</a>
+        </div>
+        {% endcomment %}
+        
+        <div  class="portfolio-modal__stack">
+          <p class="portfolio-modal__stack-title">Tecnologías utilizadas:</p>
+          <ul class="tags">
+            {% for s in project.value.stack_used|split:"," %}
+                <li>{{s}}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+{#  Portfolio Modal  #}
+
+  <script src="{% static 'home/assets/js/jquery-2.2.4.min.js' %}"></script>
+  <script src="{% static 'home/assets/js/popper.min.js' %}"></script>
+  <script src="{% static 'home/assets/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'home/assets/js/menu.js' %}"></script>
+  <script src="{% static 'home/assets/js/jquery.waypoints.js' %}"></script>
+  <script src="{% static 'home/assets/js/progress-list.js' %}"></script>
+  <script src="{% static 'home/assets/js/section.js' %}"></script>
+  <script src="{% static 'home/assets/js/portfolio-filter.js' %}"></script>
+  <script src="{% static 'home/assets/js/slider-carousel.js' %}"></script>
+  <script src="{% static 'home/assets/js/mobile-menu.js' %}"></script>
+  <script src="{% static 'home/assets/js/mbclicker.min.js' %}"></script>
+  <script src="{% static 'home/assets/js/site-btn.js' %}"></script>
+  <script src="{% static 'home/assets/js/style-switcher.js' %}"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  {% if messages %}
+  {% for m in messages %}
+      <script>
+          Swal.fire({
+              "title": "Felicidades",
+              "text": "{{m}}",
+              "icon": "success"
+          })
+      </script>
+  {% endfor %}
+{% endif %}
+</body>
+</html>
