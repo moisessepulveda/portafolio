@@ -10,12 +10,12 @@ services:
       - postgres:postgres
       - redis:redis
     volumes:
-      - web-django:/app
-      - web-static:/app/static
+      - ./porfolio:/application
+      - web-static:/application/static
     env_file: .env
     environment:
       DEBUG: 'true'
-    command: bash -c "/application/manage.py collectstatic --noinput;/usr/local/bin/gunicorn porfolio.wsgi:application -w 2 -b :8000"
+    command: python manage.py runserver 0.0.0.0:8000
     # command: /usr/local/bin/gunicorn porfolio.wsgi:application -w 2 -b :8000
 
   nginx:
