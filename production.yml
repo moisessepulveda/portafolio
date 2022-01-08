@@ -17,7 +17,8 @@ services:
     #command: /usr/local/bin/gunicorn docker_django.wsgi:application -w 2 -b :8000
 
   nginx:
-    restart: always
+    image: nginx:1.15-alpine
+    restart: unless-stopped
     build: ./nginx/
     ports:
       - "80:80"
