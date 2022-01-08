@@ -1,7 +1,7 @@
 server {
 
     listen 80;
-    server_name www.msepulveda.cl msepulveda.cl
+    server_name msepulveda.cl www.msepulveda.cl;
     charset utf-8;
 
     location /static {
