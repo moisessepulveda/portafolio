@@ -12,6 +12,7 @@ services:
     volumes:
       - ./porfolio:/application
       - web-static:/application/static
+      - web-media:/application/media
     env_file: .env
     environment:
       DEBUG: 'true'
@@ -25,6 +26,7 @@ services:
       - "8000:80"
     volumes:
       - web-static:/www/static
+      - web-media:/www/media
     links:
       - web:web
 
@@ -46,6 +48,7 @@ services:
       - redisdata:/data
 
 volumes:
+  web-media:
   web-django:
   web-static:
   pgdata:
