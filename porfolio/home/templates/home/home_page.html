@@ -399,7 +399,7 @@
         <p class="portfolio-modal__title">{{ project.value.title|title }}</p>
         {% image project.value.image fill-600x450-c100 alt="project-img" class="portfolio-modal__img" alt="modal_img" %}
         <p class="portfolio-modal__description">
-            {{ project.value.descripcion|capfirst}}
+            {{ project.value.descripcion|richtext}}
         </p>
         {% comment "enlace" %}
         <div class="portfolio-modal__link">

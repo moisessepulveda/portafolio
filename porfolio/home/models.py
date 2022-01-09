@@ -121,7 +121,7 @@ class HomePage(CustomEmailForm, AbstractEmailForm):
         ('title', blocks.CharBlock(label="Título")),
         ('image', ImageChooserBlock(label="Imagen")),
         ('summary', blocks.TextBlock(label="Resumen")),
-        ('descripcion', blocks.TextBlock(label="Descripción")),
+        ('descripcion', blocks.RichTextBlock(label="Descripción")),
         ('stack_used', blocks.TextBlock(label="Tecnologías utilizadas")),
      ])),
     ])
