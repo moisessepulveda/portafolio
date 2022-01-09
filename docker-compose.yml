@@ -4,8 +4,8 @@ services:
   web:
     restart: always
     build: ./porfolio
-    expose:
-      - "8000"
+    ports:
+      - "8000:8000"
     links:
       - postgres:postgres
       - redis:redis
@@ -18,18 +18,6 @@ services:
       DEBUG: 'true'
     command: python manage.py runserver 0.0.0.0:8000
     # command: /usr/local/bin/gunicorn porfolio.wsgi:application -w 2 -b :8000
-
-  nginx:
-    restart: always
-    build: ./nginx/
-    ports:
-      - "8000:80"
-    volumes:
-      - web-static:/www/static
-      - web-media:/www/media
-    links:
-      - web:web
-
   postgres:
     restart: always
     image: postgres:latest
