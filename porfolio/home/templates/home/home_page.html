@@ -155,7 +155,7 @@
             </p>
             <p class="resume-list__block-date">{{ education.value.period}}</p>
             <p>
-                {{education.value.title|capfirst}}
+                {{education.value.title|richtext}}
             </p>
           </div>
         {% endfor %}
@@ -172,7 +172,7 @@
                 <p class="resume-list__block-title">{{j.value.enterprise}}</p>
                 <p class="resume-list__block-date">{{j.value.period}}</p>
                 <p>
-                {{j.value.description|capfirst}}
+                {{j.value.description|richtext}}
                 </p>
             </div>
         {% endfor %}

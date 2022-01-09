@@ -93,7 +93,7 @@ class HomePage(CustomEmailForm, AbstractEmailForm):
      ('item', blocks.StructBlock([
          ('university', blocks.CharBlock(label="Universidad/Instituto")),
          ('period', blocks.CharBlock(label="Periodo")),
-         ('title', blocks.TextBlock(label="Descripción")),
+         ('title', blocks.RichTextBlock(label="Descripción")),
      ])),
     ])
 
@@ -101,7 +101,7 @@ class HomePage(CustomEmailForm, AbstractEmailForm):
      ('trabajo', blocks.StructBlock([
          ('enterprise', blocks.CharBlock(label="Empresa")),
          ('period', blocks.CharBlock(label="Periodo")),
-         ('description', blocks.TextBlock(label="Descripción")),
+         ('description', blocks.RichTextBlock(label="Descripción")),
      ])),
     ])
 
