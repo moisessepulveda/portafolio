@@ -127,6 +127,7 @@ class HomePage(CustomEmailForm, AbstractEmailForm):
     ])
 
     courses_title = models.CharField(max_length=50, default="Cursos creados por mi_")
+    courses_message = RichTextField("Mensaje", default="")
     courses = StreamField([
      ('curso', blocks.StructBlock([
         ('title', blocks.CharBlock(label="Título")),
@@ -192,6 +193,7 @@ class HomePage(CustomEmailForm, AbstractEmailForm):
         ], heading="Testimonios", classname="collapsible collapsed"),
         MultiFieldPanel([
             FieldPanel('courses_title', classname="title"),
+            FieldPanel('courses_message', classname="full"),
             StreamFieldPanel("courses")
         ], heading="Mis Cursos", classname="collapsible collapsed"),
         MultiFieldPanel([
