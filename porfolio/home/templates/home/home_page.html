@@ -284,8 +284,12 @@
     <div class="row">
       <div class="col-md-12">
         <h2 id="blog_header" class="section__title">{{ page.courses_title|title }}</h2>
+        <p class="section__description">
+            {{ page.courses_message | richtext }}
+        </p>
       </div>
     </div>
+    <br>
     <div class="row post-cards">
         {% for c in page.courses %}
       <div class="col-md-4">
