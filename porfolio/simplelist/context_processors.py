@@ -1,4 +1,4 @@
-from simplelist.models import TermsPage, SimpleListPage
+from .models import TermsPage, SimpleListPage
 
 
 def main_menu(request):
