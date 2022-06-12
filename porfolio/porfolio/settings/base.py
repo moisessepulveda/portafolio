@@ -27,6 +27,7 @@ DEBUG = False
 INSTALLED_APPS = [
     'home',
     'search',
+    'simplelist',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -81,6 +82,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'simplelist.context_processors.main_menu',
             ],
         },
     },
