@@ -14,8 +14,6 @@ services:
       - web-static:/application/static
       - web-media:/application/media
     env_file: .env
-    environment:
-      DEBUG: 'true'
     command: python manage.py runserver 0.0.0.0:8000
     # command: /usr/local/bin/gunicorn porfolio.wsgi:application -w 2 -b :8000
   postgres:
