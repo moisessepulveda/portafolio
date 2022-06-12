@@ -37,7 +37,7 @@ class SimpleListPage(Page):
     description_section3 = RichTextField(default='', verbose_name="Descripción sección 3")
 
     download_caption = models.CharField(
-        max_length=80,
+        max_length=200,
         verbose_name="Descripción descarga",
         default='',
         null=True,
