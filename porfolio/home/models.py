@@ -60,6 +60,9 @@ class HomePage(CustomEmailForm, AbstractEmailForm):
     footer_legend = models.CharField("Mensaje del footer", null=True, blank=False,
                                      max_length=200,
                                      default='Moisés Sepúlveda - Sitio construido utilizando DJANGO WAGTAIL')
+    tab_text = models.CharField("Texto de la pestaña", null=True, blank=False,
+                                     max_length=200,
+                                     default='Ingresa el título de la pestaña')
 
     hero_picture = models.ForeignKey(
         'wagtailimages.Image',
@@ -207,7 +210,8 @@ class HomePage(CustomEmailForm, AbstractEmailForm):
             ], "Email"),
         ], heading="Contactanos", classname="collapsible collapsed"),
         MultiFieldPanel([
-            FieldPanel('footer_legend')
+            FieldPanel('footer_legend'),
+            FieldPanel('tab_text'),
         ], heading='otra info', classname="collapsible collapsed")
 
     ]
