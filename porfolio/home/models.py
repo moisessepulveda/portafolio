@@ -206,5 +206,8 @@ class HomePage(CustomEmailForm, AbstractEmailForm):
                 FieldPanel('subject'),
             ], "Email"),
         ], heading="Contactanos", classname="collapsible collapsed"),
+        MultiFieldPanel([
+            FieldPanel('footer_legend')
+        ], heading='otra info', classname="collapsible collapsed")
 
     ]
