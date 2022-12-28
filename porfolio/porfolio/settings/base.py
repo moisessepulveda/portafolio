@@ -16,17 +16,17 @@ import os
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 DEBUG = False
-
+WAGTAILADMIN_BASE_URL = 'http://example.com'
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
-
-
 # Application definition
 
 INSTALLED_APPS = [
     'home',
     'search',
     'simplelist',
+    'consulting',
+    'techblog',
 
     'wagtail.contrib.forms',
     #'wagtail.contrib.redirects',

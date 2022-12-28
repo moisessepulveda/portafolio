@@ -2,11 +2,9 @@ from django.db import models
 from django.shortcuts import redirect
 from wagtail.core.models import Page
 from wagtail.core.fields import RichTextField, StreamField
-from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, StreamFieldPanel, InlinePanel
-from wagtail.images.edit_handlers import ImageChooserPanel
-from wagtail.documents.edit_handlers import DocumentChooserPanel
+from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, FieldPanel, InlinePanel
 from wagtail.core import blocks
-from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel, FieldRowPanel
+from wagtail.admin.edit_handlers import FieldPanel, FieldPanel, FieldRowPanel
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
 from modelcluster.fields import ParentalKey
@@ -59,6 +57,9 @@ class HomePage(CustomEmailForm, AbstractEmailForm):
     linkedin_link = models.URLField("Enlace linked IN", null=True, blank=True)
     facebook_link = models.URLField("Enlace de facebook", null=True, blank=True)
     youtube_link = models.URLField("Enlace de YouTube", null=True, blank=True)
+    footer_legend = models.CharField("Mensaje del footer", null=True, blank=False,
+                                     max_length=200,
+                                     default='Moisés Sepúlveda - Sitio construido utilizando DJANGO WAGTAIL')
 
     hero_picture = models.ForeignKey(
         'wagtailimages.Image',
@@ -95,7 +96,7 @@ class HomePage(CustomEmailForm, AbstractEmailForm):
             ('period', blocks.CharBlock(label="Periodo")),
             ('title', blocks.RichTextBlock(label="Descripción")),
         ])),
-    ])
+    ], use_json_field=True)
 
     job_history = StreamField([
         ('trabajo', blocks.StructBlock([
@@ -103,14 +104,14 @@ class HomePage(CustomEmailForm, AbstractEmailForm):
             ('period', blocks.CharBlock(label="Periodo")),
             ('description', blocks.RichTextBlock(label="Descripción")),
         ])),
-    ])
+    ], use_json_field=True)
 
     skills = StreamField([
         ('habilidades', blocks.StructBlock([
             ('technology', blocks.CharBlock(label="Tecnología")),
             ('percentage', blocks.CharBlock(label="Porcentaje")),
         ])),
-    ])
+    ], use_json_field=True)
 
     # resume fields end
 
@@ -124,7 +125,7 @@ class HomePage(CustomEmailForm, AbstractEmailForm):
             ('descripcion', blocks.RichTextBlock(label="Descripción")),
             ('stack_used', blocks.TextBlock(label="Tecnologías utilizadas")),
         ])),
-    ])
+    ], use_json_field=True)
 
     courses_title = models.CharField(max_length=50, default="Cursos creados por mi_")
     courses_message = RichTextField("Mensaje", default="")
@@ -136,7 +137,7 @@ class HomePage(CustomEmailForm, AbstractEmailForm):
             ('technology', blocks.CharBlock(label="Tecnología")),
             ('link', blocks.URLBlock(label="Enlace Video/Lista")),
         ])),
-    ])
+    ], use_json_field=True)
 
     testimonials = StreamField([
         ('testimonio', blocks.StructBlock([
@@ -144,7 +145,7 @@ class HomePage(CustomEmailForm, AbstractEmailForm):
             ('project', blocks.CharBlock(label="Proyecto")),
             ('message', blocks.TextBlock(label="Mensaje")),
         ])),
-    ])
+    ], use_json_field=True)
 
     # proyects field end
 
@@ -163,7 +164,7 @@ class HomePage(CustomEmailForm, AbstractEmailForm):
                 FieldPanel('email', classname="full"),
             ]),
             FieldPanel('address', classname="full"),
-            ImageChooserPanel('hero_picture'),
+            FieldPanel('hero_picture'),
             MultiFieldPanel([
                 FieldPanel('github_link'),
                 FieldPanel('facebook_link'),
@@ -174,26 +175,26 @@ class HomePage(CustomEmailForm, AbstractEmailForm):
         MultiFieldPanel([
             FieldPanel('presentation_title'),
             FieldPanel('presentation_desc'),
-            DocumentChooserPanel("cv_file")
+            FieldPanel("cv_file")
         ], heading="Presentación"),
         MultiFieldPanel([
             FieldPanel('resume_title', classname="title"),
             FieldPanel('resume_body', classname="full"),
-            StreamFieldPanel("education"),
-            StreamFieldPanel("job_history"),
-            StreamFieldPanel("skills")
+            FieldPanel("education"),
+            FieldPanel("job_history"),
+            FieldPanel("skills")
         ], heading="Curriculum", classname="collapsible collapsed"),
         MultiFieldPanel([
             FieldPanel('project_title', classname="title"),
-            StreamFieldPanel("projects")
+            FieldPanel("projects")
         ], heading="Proyectos", classname="collapsible collapsed"),
         MultiFieldPanel([
-            StreamFieldPanel("testimonials")
+            FieldPanel("testimonials")
         ], heading="Testimonios", classname="collapsible collapsed"),
         MultiFieldPanel([
             FieldPanel('courses_title', classname="title"),
             FieldPanel('courses_message', classname="full"),
-            StreamFieldPanel("courses")
+            FieldPanel("courses")
         ], heading="Mis Cursos", classname="collapsible collapsed"),
         MultiFieldPanel([
             InlinePanel('form_fields', label="Form fields"),

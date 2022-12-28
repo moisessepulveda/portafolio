@@ -108,7 +108,7 @@ class FooterSettings(BaseSetting):
             ('label', blocks.CharBlock(max_length=50, label="Etiqueta")),
             ('urls', blocks.URLBlock(label="URL")),
         ], label="URL"))
-    ], default='', null=True, blank=True, )
+    ], default='', null=True, blank=True, use_json_field=True)
 
     class Meta:
         verbose_name = 'Datos del pie de página'
