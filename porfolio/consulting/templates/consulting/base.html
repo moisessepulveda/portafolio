@@ -10,6 +10,7 @@
     <!-- ======== Page title ============ -->
     <title>CONSULTER - Business Consulting HTML Template</title>
     {% load static %}
+      {% load wagtailcore_tags wagtailimages_tags home_extras %}
     <!-- ========== Favicon Icon ========== -->
     <link rel="shortcut icon" href="{% static 'consulting/assets/img/favicon.png' %}">
     <!-- ===========  All Stylesheet ================= -->
@@ -311,8 +312,8 @@
                 <div class="col-xl-6">
                     <div class="banner-home__content pb-lg-60 pb-md-50 pb-sm-45 pb-xs-40">
                         <h6 class="sub-title color-white mb-20 mb-sm-15 mb-xs-10 d-inline-block">Welcome To <span>Consulter</span> Consultancy</h6>
-                        <h1 class="title color-white fw-bold mb-20 mb-sm-15 mb-xs-10">Build Up Your Business Strategy</h1>
-
+                        <h1 class="title color-white fw-bold mb-20 mb-sm-15 mb-xs-10">{{ page.hero_title | title }}</h1>
+<
                         <div class="description font-la color-white mb-45 mb-md-30 mb-sm-25 mb-xs-20">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
                         </div>
@@ -328,7 +329,8 @@
                 <div class="col-xl-6">
                     <div class="banner-home__media">
                         <img src="{% static 'consulting/assets/img/banner/banner-start.png' %}" class="img-fluid start" alt="">
-                        <img src="{% static 'consulting/assets/img/banner/banner-home.png' %}" class="img-fluid" alt="">
+                        {% image page.hero_image width-1000 class="img-fluid" %}
+                        <!--<img src="{% static 'consulting/assets/img/banner/banner-home.png' %}" class="img-fluid" alt="">-->
                     </div>
                 </div>
             </div>
