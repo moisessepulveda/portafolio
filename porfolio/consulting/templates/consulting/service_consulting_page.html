@@ -11,7 +11,7 @@
     {% load wagtailcore_tags wagtailimages_tags home_extras %}
 
     <!-- ======== Page title ============ -->
-    <title>CONSULTER - Business Consulting HTML Template</title>
+    <title>{{ page.title | title }} - CONSULTER</title>
     <!-- ========== Favicon Icon ========== -->
     <link rel="shortcut icon" href="{% static 'consulting/assets/img/favicon.png' %}">
     <!-- ===========  All Stylesheet ================= -->
@@ -92,144 +92,7 @@
 <!-- welcome content start from here -->
 
 <!-- header end -->
-<header class="header header-1">
-    <div class="top-header d-none d-md-block">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-8">
-                    <div class="header-cta">
-                        <ul>
-                            <li><a><i class="fal fa-clock"></i> Mon – Fri: 8.00 – 18.00</a></li>
-                            <li><a href="mailto:consulter@example.com"><i
-                                    class="icon-email"></i>consulter@example.com</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="col-4">
-                    <div class="header-right-socail d-flex justify-content-end align-items-center">
-                        <h6 class="font-la color-white fw-600">Follow On:</h6>
-
-                        <div class="social-profile">
-                            <ul>
-                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="main-header-wraper">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="d-flex align-items-center justify-content-between">
-                        <div class="header-logo">
-                            <div class="logo">
-                                <a href="index.html">
-                                    <img src="{% static 'consulting/assets/img/logo/logo.png' %}" alt="logo">
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="header-menu d-none d-xl-block">
-                            <div class="main-menu">
-                                <ul>
-                                    <li>
-                                        <a href="index.html">Home</a>
-                                        <ul>
-                                            <li><a href="index.html">home 1</a></li>
-                                            <li><a href="index-2.html">home 2</a></li>
-                                            <li><a href="index-3.html">home 3</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="services.html">Our Services</a>
-
-                                        <ul>
-                                            <li><a href="services.html">Our Services 1</a></li>
-                                            <li><a href="services-2.html">Our Services 2</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a>Pages</a>
-
-                                        <ul>
-                                            <li><a href="about.html">About</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                            <li><a href="table.html">Pricing Table</a></li>
-                                            <li><a href="team.html">Team</a></li>
-                                            <li><a href="team-details.html">Team Details</a></li>
-                                            <li><a href="services-details.html">Services Details</a></li>
-                                            <li><a href="our-project-details.html">Our Project Details</a></li>
-                                            <li><a href="blog-details.html">Blog Details</a></li>
-                                            <li><a href="404.html">404</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="our-project.html">Portfolio</a>
-                                    </li>
-                                    <li>
-                                        <a href="blog.html">Blog</a>
-
-                                        <ul>
-                                            <li><a href="blog.html">Blog 1</a></li>
-                                            <li><a href="blog-standard.html">Blog 2</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="header-right d-flex align-items-center">
-                            <div class="header-search">
-                                <a class="search-toggle" data-selector=".header-search">
-                                    <span class="fas fa-search"></span>
-                                </a>
-
-                                <form class="search-box" action="#" method="get">
-                                    <div class="form-group d-flex align-items-center">
-                                        <input type="search" name="s" value="" class="search-input" id="search"
-                                               placeholder="Search">
-                                        <button type="submit" class="search-submit"><i class="fas fa-search"></i>
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <div class="horizontal-bar d-none d-md-block"></div>
-
-                            <a href="tel:+1235568824" class="header-contact d-none d-md-flex align-items-center">
-                                <div class="icon color-primary">
-                                    <i class="icon-call"></i>
-                                    <!-- <img src="{% static 'consulting/assets/img/icon/phone-1.svg' %}" alt=""> -->
-                                </div>
-                                <div class="text">
-                                    <span class="font-la mb-5 d-block fw-500">Contact For Support</span>
-                                    <h5 class="fw-500">+123 556 8824</h5>
-                                </div>
-                            </a>
-
-                            <div class="mobile-nav-bar d-block ml-3 ml-sm-5 d-xl-none">
-                                <div class="mobile-nav-wrap">
-                                    <div id="hamburger">
-                                        <i class="fal fa-bars"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
-
+    {% include 'consulting/includes/header.html' %}
 <!-- mobile menu - responsive menu  -->
 <div class="mobile-nav">
     <button type="button" class="close-nav">

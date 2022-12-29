@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-from wagtail.admin import blocks
+from wagtail import blocks
 from wagtail.admin.panels import MultiFieldPanel, FieldPanel
 from wagtail.fields import StreamField
 from wagtail.images.blocks import ImageChooserBlock
