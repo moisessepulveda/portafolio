@@ -92,7 +92,7 @@ WSGI_APPLICATION = 'porfolio.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-"""
+
 
 
 DATABASES = {
@@ -102,18 +102,18 @@ DATABASES = {
     }
 }
 
-"""
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ['DB_NAME'],
-        'USER': os.environ['DB_USER'],
-        'PASSWORD': os.environ['DB_PASS'],
-        'HOST': os.environ['DB_SERVICE'],
-        'PORT': os.environ['DB_PORT']
-    }
-}
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': os.environ['DB_NAME'],
+#         'USER': os.environ['DB_USER'],
+#         'PASSWORD': os.environ['DB_PASS'],
+#         'HOST': os.environ['DB_SERVICE'],
+#         'PORT': os.environ['DB_PORT']
+#     }
+# }
 """
 CACHES = {
     "default": {
