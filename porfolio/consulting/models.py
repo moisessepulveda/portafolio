@@ -17,11 +17,11 @@ class BodyContentBlock(blocks.StreamBlock):
     h2 = blocks.CharBlock(form_classname="title")
     h3 = blocks.CharBlock(form_classname="title")
     h4 = blocks.CharBlock(form_classname="title")
-    paragraph = blocks.RichTextBlock()
-    quote = blocks.RichTextBlock()
-    image = ImageChooserBlock()
-    youtube_video = blocks.URLBlock()
-    gallery = blocks.ListBlock(ImageChooserBlock(), icon='image', label='Gallery')
+    paragraph = blocks.RichTextBlock(label="Parrafo")
+    quote = blocks.RichTextBlock(label="Cita")
+    image = ImageChooserBlock(label="Imagén")
+    youtube_video = blocks.URLBlock(label="Video en youtube")
+    gallery = blocks.ListBlock(ImageChooserBlock(), icon='image', label='Galería')
 
     class Meta:
         template = 'consulting/blocks/body_content_block.html'
@@ -84,6 +84,9 @@ class ServiceConsultingPage(Page):
             FieldPanel('contact_us_title'),
         ], heading='información del costado'),
     ]
+
+    class Meta:
+        verbose_name = 'Página de servicio'
 
     def get_context(self, request):
         # Filter by tag
@@ -160,3 +163,20 @@ class FormPage(AbstractEmailForm):
             FieldPanel('subject'),
         ], "Email"),
     ]
+
+    class Meta:
+        verbose_name = 'Página con formulario'
+
+
+class InfoPage(Page):
+    body = StreamField(BodyContentBlock(),
+                       use_json_field=True,
+                       verbose_name='Cuerpo de la página',
+                       null=True, blank=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('body'),
+    ]
+
+    class Meta:
+        verbose_name = 'Página de información'
