@@ -228,40 +228,7 @@
     <div class="container">
         <div class="row" data-sticky_parent>
             <div class="col-xl-8" data-sticky_column>
-                {% for element in page.body %}
-                    {% if element.block_type == 'h1' or element.block_type == 'h2' or element.block_type == 'h3' or element.block_type == 'h4'%}
-                        <{{ element.block_type }}>{{ element.value }}</{{ element.block_type }}>
-                    {% elif element.block_type == 'image' %}
-                        <div style="padding: 20px 0 20px 0">
-                            {% image element.value width-1000 style='width: 100%; height: auto' %}
-                        </div>
-                    {% elif element.block_type ==  'paragraph' %}
-                        {{ element.value | richtext }}
-                    {% elif element.block_type == 'quote' %}
-                        <div style="background-color: #dddddd; padding: 20px 20px 20px 50px;">
-                            <img src="{% static 'techblog/assets/images/blockquote2.png' %}" alt=""
-                                 width="50" height="50">
-                            <p>
-                                {{ element.value | richtext }}
-                            </p>
-                        </div>
-                    {% elif element.block_type == 'youtube_video' %}
-                        <div style="padding:20px 0 20px 0">
-                            <figure class="post-media">
-                                <div class="embed-responsive embed-responsive-16by9">
-                                    <iframe width="700" height="400"
-                                            src="{{ element.value }}"
-                                            frameborder="0"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                            allowfullscreen></iframe>
-                                </div>
-                                <figcaption>
-                                    Drawn for an insurance company
-                                </figcaption>
-                            </figure>
-                        </div>
-                    {% endif %}
-                {% endfor %}
+                {% include 'consulting/includes/stream_field_template.html' with stream_data=stream_data %}
             </div>
 
             <div class="col-xl-4">
@@ -292,8 +259,9 @@
                             <a href="contact.html" class="theme-btn">Contáctanos <i
                                     class="fab fa-telegram-plane"></i></a>
                         </div>
-                    </div>
 
+                    </div>
+                    {{ page.bottom_body }}
                 </div>
             </div>
         </div>

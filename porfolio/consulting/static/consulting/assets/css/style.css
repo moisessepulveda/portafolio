@@ -12735,7 +12735,7 @@ header.hover-color-green .main-header-wraper .header-right .header-search .searc
 .contact-form .contact-form .single-personal-info {
   margin-bottom: 20px;
 }
-.contact-form .contact-form input, .contact-form .contact-form textarea {
+.contact-form .contact-form input, .contact-form .contact-form textarea select {
   width: 100%;
   outline: none;
   font-size: 15px;
@@ -15178,7 +15178,7 @@ header.hover-color-green .main-header-wraper .header-right .header-search .searc
 .get-free__content-form form {
   gap: 20px;
 }
-.get-free__content-form form .single-personal-info input {
+.get-free__content-form form .single-personal-info input select{
   width: 263px;
   max-width: 100%;
   font-size: 14px;
@@ -15188,7 +15188,7 @@ header.hover-color-green .main-header-wraper .header-right .header-search .searc
   border-radius: 2px;
 }
 @media (max-width: 991px) {
-  .get-free__content-form form .single-personal-info input {
+  .get-free__content-form form .single-personal-info input select{
     width: 100%;
   }
 }
@@ -17175,7 +17175,7 @@ header.hover-color-green .main-header-wraper .header-right .header-search .searc
 .can-help .contact-form .single-personal-info {
   margin-bottom: 20px;
 }
-.can-help .contact-form input, .can-help .contact-form textarea {
+.can-help .contact-form input, .can-help .contact-form textarea, .contact-form textarea, .contact-form select {
   width: 100%;
   outline: none;
   font-size: 15px;
@@ -17190,14 +17190,18 @@ header.hover-color-green .main-header-wraper .header-right .header-search .searc
           box-sizing: border-box;
   border: 1.5px solid rgba(14, 30, 54, 0.2);
 }
-.can-help .contact-form input::-webkit-input-placeholder, .can-help .contact-form textarea::-webkit-input-placeholder {
+/*for radio buttons*/
+.contact-form ul > li {
+  display: inline-block;
+}
+.can-help .contact-form input::-webkit-input-placeholder, .can-help .contact-form textarea::-webkit-input-placeholder, .can-help .contact-form select::-webkit-input-placeholder {
   color: #243342;
   font-size: 15px;
   font-weight: 400;
   font-family: "Lato", sans-serif;
   line-height: 26px;
 }
-.can-help .contact-form input::-moz-placeholder, .can-help .contact-form textarea::-moz-placeholder {
+.can-help .contact-form input::-moz-placeholder, .can-help .contact-form textarea::-moz-placeholder,.contact-form select::-moz-placeholder  {
   color: #243342;
   font-size: 15px;
   font-weight: 400;

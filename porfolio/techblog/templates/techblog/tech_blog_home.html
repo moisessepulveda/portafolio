@@ -1,9 +1,13 @@
 {% extends 'techblog/base.html' %}
 {% load static %}
+  {% load wagtailcore_tags wagtailimages_tags home_extras %}
 
 {% block content %}
-    <div class="main-content">
+    <pre>
 
+
+    </pre>
+    <div class="main-content">
         <section class="banner banner__home-with-slider section-gap-bottom">
             <div class="banner__home-with-slider-overlay">
 
@@ -15,76 +19,38 @@
                     <div class="col-xl-5">
                         <div class="banner-slider-container">
                             <div class="slick-slider slick-slider-for slick-synced">
-                                <div class="item">
-                                    <div class="post-metas home-banner-post-metas m-b-xs-20">
-                                        <ul class="list-inline">
-                                            <li class="m-r-xs-20">
-                                                <a href="#" class="d-flex align-items-center">
-                                                    <img src="{% static 'techblog/assets/images/features/1.png' %}" alt="" class="m-r-xs-20">
-                                                    <span>Eugenia Hayes</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <!-- End of .post-metas -->
+                                {% for c in page.carrousel %}
 
-                                    <h1 class="page-title m-b-xs-40 hover-line">
-                                        <a href="post-format-standard.html">
-                                            Magazine Belie Ves Little Will Change In 22-6A Football Battles
-                                        </a>
-                                    </h1>
-                                    <div class="btn-group">
-                                        <a href="post-format-standard.html" class="btn btn-primary m-r-xs-30">READ
-                                            MORE</a>
-                                        <a href="#" class="btn-link">ALL CURRENT NEWS</a>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="post-metas home-banner-post-metas m-b-xs-20">
-                                        <ul class="list-inline">
-                                            <li class="m-r-xs-20">
-                                                <a href="#" class="d-flex align-items-center">
-                                                    <img src="{% static 'techblog/assets/images/features/1.png' %}" alt="" class="m-r-xs-20">
-                                                    <span>Eugenia Hayes</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <!-- End of .post-metas -->
+                                    <div class="item">
+                                        <div class="post-metas home-banner-post-metas m-b-xs-20">
+                                            <ul class="list-inline">
+                                                <li class="m-r-xs-20">
+                                                    <a href="#" class="d-flex align-items-center">
 
-                                    <h1 class="page-title m-b-xs-40 hover-line">
-                                        <a href="post-format-standard.html">
-                                            Napolean Dynomite Inspired This Artist To Create A Masterpiece
-                                        </a>
-                                    </h1>
-                                    <div class="btn-group">
-                                        <a href="#" class="btn btn-primary m-r-xs-30">READ MORE</a>
-                                        <a href="#" class="btn-link">ALL CURRENT NEWS</a>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="post-metas home-banner-post-metas m-b-xs-20">
-                                        <ul class="list-inline">
-                                            <li class="m-r-xs-20">
-                                                <a href="#" class="d-flex align-items-center">
-                                                    <img src="{% static 'techblog/assets/images/features/1.png' %}" alt="" class="m-r-xs-20">
-                                                    <span>Eugenia Hayes</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <!-- End of .post-metas -->
+                                                        <img src="{{ c.value.owner.wagtail_userprofile.avatar.url }}"
+                                                         alt="" class="m-r-xs-20">
+                                                        <span>{{ c.value.owner.first_name | title }} {{ c.value.owner.last_name | title }} </span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!-- End of .post-metas -->
+                                        <h1 class="page-title m-b-xs-40 hover-line">
+                                            <a href="post-format-standard.html">
+                                                {{ c.value.title }}
+                                            </a>
+                                            <p>{{ c.value.extract | richtext }}</p>
+                                        </h1>
+                                        <div class="btn-group">
+                                            <a href="{% pageurl c.value %}" class="btn btn-primary m-r-xs-30">Saber
+                                                mas</a>
 
-                                    <h1 class="page-title m-b-xs-40 hover-line">
-                                        <a href="post-format-standard.html">
-                                            Psychologists Use This Painting To Determine Personality
-                                        </a>
-                                    </h1>
-                                    <div class="btn-group">
-                                        <a href="#" class="btn btn-primary m-r-xs-30">READ MORE</a>
-                                        <a href="#" class="btn-link">ALL CURRENT NEWS</a>
+                                            <a href="{% pageurl c.value.get_parent %}" class="btn-link">Ver todo en {{ c.value.get_parent }}</a>
+
+                                        </div>
                                     </div>
-                                </div>
+                                {% endfor %}
+
                             </div>
                             <!-- End of .owl-carousel -->
                         </div>
@@ -96,16 +62,12 @@
 
                 <div class="banner-slider-container-synced">
                     <div class="slick-slider slick-slider-nav slick-synced" data-slick-items="1" data-slick-dots="true"
-                        data-slick-arrows="true">
-                        <div class="item">
-                            <img src="{% static 'techblog/assets/images/home-banner-slider-1.jpg' %}" alt="banner slider image">
-                        </div>
-                        <div class="item">
-                            <img src="{% static 'techblog/assets/images/home-banner-slider-2.jpg' %}" alt="banner slider image">
-                        </div>
-                        <div class="item">
-                            <img src="{% static 'techblog/assets/images/home-banner-slider-3.jpg' %}" alt="banner slider image">
-                        </div>
+                         data-slick-arrows="true">
+                        {% for c in page.carrousel %}
+                            <div class="item">
+                                {% image c.value.main_image width-1000 class="banner slider image" %}
+                            </div>
+                        {% endfor %}
                     </div>
                     <!-- End of .owl-carousel -->
 
@@ -177,14 +139,15 @@
                     <div class="col-lg-6">
                         <div class="media post-block m-b-xs-30">
                             <a href="post-format-standard.html" class="align-self-center"><img class=" m-r-xs-30"
-                                    src="{% static 'techblog/assets/images/trending-stories/trending-stories-1.jpg' %}" alt=""></a>
+                                                                                               src="{% static 'techblog/assets/images/trending-stories/trending-stories-1.jpg' %}"
+                                                                                               alt=""></a>
                             <div class="media-body">
                                 <div class="post-cat-group m-b-xs-10">
                                     <a href="business.html" class="post-cat cat-btn bg-color-blue-grey-one">WORLD</a>
                                 </div>
                                 <h3 class="axil-post-title hover-line"><a href="post-format-standard.html">Live Poker
-                                        How To Win
-                                        Tournament Games</a></h3>
+                                    How To Win
+                                    Tournament Games</a></h3>
                                 <div class="post-metas">
                                     <ul class="list-inline">
                                         <li>By <a href="#">Amachea Jajah</a></li>
@@ -199,15 +162,16 @@
                     <div class="col-lg-6">
                         <div class="media post-block m-b-xs-30">
                             <a href="post-format-standard.html" class="align-self-center"><img class=" m-r-xs-30"
-                                    src="{% static 'techblog/assets/images/trending-stories/trending-stories-2.jpg' %}" alt=""></a>
+                                                                                               src="{% static 'techblog/assets/images/trending-stories/trending-stories-2.jpg' %}"
+                                                                                               alt=""></a>
                             <div class="media-body">
                                 <div class="post-cat-group m-b-xs-10">
                                     <a href="business.html" class="post-cat cat-btn bg-color-red-two">FOOD</a>
                                 </div>
                                 <h3 class="axil-post-title hover-line"><a href="post-format-standard.html">Crispy Air
-                                        Fryer
-                                        Parmesan And Thyme Roasted
-                                        Wedge Fries</a>
+                                    Fryer
+                                    Parmesan And Thyme Roasted
+                                    Wedge Fries</a>
                                 </h3>
                                 <div class="post-metas">
                                     <ul class="list-inline">
@@ -223,15 +187,16 @@
                     <div class="col-lg-6">
                         <div class="media post-block m-b-xs-30">
                             <a href="post-format-standard.html" class="align-self-center"><img class=" m-r-xs-30"
-                                    src="{% static 'techblog/assets/images/trending-stories/trending-stories-3.jpg' %}" alt=""></a>
+                                                                                               src="{% static 'techblog/assets/images/trending-stories/trending-stories-3.jpg' %}"
+                                                                                               alt=""></a>
                             <div class="media-body">
                                 <div class="post-cat-group m-b-xs-10">
                                     <a href="business.html" class="post-cat cat-btn bg-color-purple-one">LIFE STYLE</a>
                                 </div>
                                 <h3 class="axil-post-title hover-line"><a href="post-format-standard.html">Boxed Water
-                                        Partners
-                                        With Rag & Bone To Tap
-                                        Consumer Creativity</a></h3>
+                                    Partners
+                                    With Rag & Bone To Tap
+                                    Consumer Creativity</a></h3>
                                 <div class="post-metas">
                                     <ul class="list-inline">
                                         <li>By <a href="#">Ahmad Nazeri</a></li>
@@ -246,15 +211,16 @@
                     <div class="col-lg-6">
                         <div class="media post-block m-b-xs-30">
                             <a href="post-format-standard.html" class="align-self-center"><img class=" m-r-xs-30"
-                                    src="{% static 'techblog/assets/images/trending-stories/trending-stories-4.jpg' %}" alt=""></a>
+                                                                                               src="{% static 'techblog/assets/images/trending-stories/trending-stories-4.jpg' %}"
+                                                                                               alt=""></a>
                             <div class="media-body">
                                 <div class="post-cat-group m-b-xs-10">
                                     <a href="business.html" class="post-cat cat-btn bg-color-blue-three">RACING</a>
                                 </div>
                                 <h3 class="axil-post-title hover-line"><a href="post-format-standard.html">Kipchoge
-                                        Proves He Has
-                                        No Equal: Runs 2nd
-                                        Fastest Marathon Time In History</a></h3>
+                                    Proves He Has
+                                    No Equal: Runs 2nd
+                                    Fastest Marathon Time In History</a></h3>
                                 <div class="post-metas">
                                     <ul class="list-inline">
                                         <li>By <a href="#">Sergio Pliego</a></li>
@@ -269,13 +235,14 @@
                     <div class="col-lg-6">
                         <div class="media post-block m-b-xs-30">
                             <a href="post-format-standard.html" class="align-self-center"><img class=" m-r-xs-30"
-                                    src="{% static 'techblog/assets/images/trending-stories/trending-stories-5.jpg' %}" alt=""></a>
+                                                                                               src="{% static 'techblog/assets/images/trending-stories/trending-stories-5.jpg' %}"
+                                                                                               alt=""></a>
                             <div class="media-body">
                                 <div class="post-cat-group m-b-xs-10">
                                     <a href="business.html" class="post-cat cat-btn bg-color-green-two">SWIMMING</a>
                                 </div>
                                 <h3 class="axil-post-title hover-line"><a href="post-format-standard.html">Maintain Your
-                                        PC Performance With PC Programs</a></h3>
+                                    PC Performance With PC Programs</a></h3>
                                 <div class="post-metas">
                                     <ul class="list-inline">
                                         <li>By <a href="#">Amachea Jajah</a></li>
@@ -290,13 +257,14 @@
                     <div class="col-lg-6">
                         <div class="media post-block m-b-xs-30">
                             <a href="post-format-standard.html" class="align-self-center"><img class=" m-r-xs-30"
-                                    src="{% static 'techblog/assets/images/trending-stories/trending-stories-6.jpg' %}" alt=""></a>
+                                                                                               src="{% static 'techblog/assets/images/trending-stories/trending-stories-6.jpg' %}"
+                                                                                               alt=""></a>
                             <div class="media-body">
                                 <div class="post-cat-group m-b-xs-10">
                                     <a href="business.html" class="post-cat cat-btn bg-color-blue-two">SPORTS</a>
                                 </div>
                                 <h3 class="axil-post-title hover-line"><a href="post-format-standard.html">Thousands Now
-                                        Adware Removal Who Never Thought They Could</a>
+                                    Adware Removal Who Never Thought They Could</a>
                                 </h3>
                                 <div class="post-metas">
                                     <ul class="list-inline">
@@ -312,13 +280,14 @@
                     <div class="col-lg-6">
                         <div class="media post-block m-b-xs-30">
                             <a href="post-format-standard.html" class="align-self-center"><img class=" m-r-xs-30"
-                                    src="{% static 'techblog/assets/images/trending-stories/trending-stories-7.jpg' %}" alt=""></a>
+                                                                                               src="{% static 'techblog/assets/images/trending-stories/trending-stories-7.jpg' %}"
+                                                                                               alt=""></a>
                             <div class="media-body">
                                 <div class="post-cat-group m-b-xs-10">
                                     <a href="business.html" class="post-cat cat-btn bg-color-yellow-one">ADVERTISING</a>
                                 </div>
                                 <h3 class="axil-post-title hover-line"><a href="post-format-standard.html">An Ugly
-                                        Myspace Profile Will Sure Ruin Your Reputation</a></h3>
+                                    Myspace Profile Will Sure Ruin Your Reputation</a></h3>
                                 <div class="post-metas">
                                     <ul class="list-inline">
                                         <li>By <a href="#">Amachea Jajah</a></li>
@@ -333,13 +302,14 @@
                     <div class="col-lg-6">
                         <div class="media post-block m-b-xs-30">
                             <a href="post-format-standard.html" class="align-self-center"><img class=" m-r-xs-30"
-                                    src="{% static 'techblog/assets/images/trending-stories/trending-stories-8.jpg' %}" alt=""></a>
+                                                                                               src="{% static 'techblog/assets/images/trending-stories/trending-stories-8.jpg' %}"
+                                                                                               alt=""></a>
                             <div class="media-body">
                                 <div class="post-cat-group m-b-xs-10">
                                     <a href="business.html" class="post-cat cat-btn bg-color-green-three">MOTIVATION</a>
                                 </div>
                                 <h3 class="axil-post-title hover-line"><a href="post-format-standard.html">Not All Blank
-                                        Cassettes Are Created Equal</a>
+                                    Cassettes Are Created Equal</a>
                                 </h3>
                                 <div class="post-metas">
                                     <ul class="list-inline">
@@ -370,7 +340,8 @@
                     <div class="col-lg-6">
                         <div class="axil-img-container flex-height-container video-container__type-2 m-b-xs-30">
                             <a href="post-format-video.html" class="d-block h-100">
-                                <img src="{% static 'techblog/assets/images/video-post/video-post-top.jpg' %}" alt="video post" class="w-100">
+                                <img src="{% static 'techblog/assets/images/video-post/video-post-top.jpg' %}"
+                                     alt="video post" class="w-100">
                                 <div class="grad-overlay grad-overlay__transparent"></div>
 
                                 <div class="video-popup video-play-btn"></div>
@@ -380,12 +351,12 @@
                                     <div class="axil-media-bottom mt-auto">
                                         <div class="post-cat-group m-b-xs-10">
                                             <a href="business.html"
-                                                class="post-cat cat-btn btn-big bg-color-purple-two">FASHION</a>
+                                               class="post-cat cat-btn btn-big bg-color-purple-two">FASHION</a>
                                         </div>
                                         <h3 class="axil-post-title hover-line"><a href="post-format-video.html">Facts
-                                                Why Inkjet
-                                                Printing Is Very
-                                                Appealing Compared</a></h3>
+                                            Why Inkjet
+                                            Printing Is Very
+                                            Appealing Compared</a></h3>
                                         <div class="post-metas">
                                             <ul class="list-inline">
                                                 <li>By <a href="#" class="post-author">Ashley Graham</a></li>
@@ -408,18 +379,19 @@
                         <div class="axil-content">
                             <div class="media post-block top-story-post-block post-block__on-dark-bg m-b-xs-30">
                                 <a href="post-format-standard.html" class="align-self-center">
-                                    <img class=" m-r-xs-30" src="{% static 'techblog/assets/images/trending-stories/top-stories-1.jpg' %}"
-                                        alt="">
+                                    <img class=" m-r-xs-30"
+                                         src="{% static 'techblog/assets/images/trending-stories/top-stories-1.jpg' %}"
+                                         alt="">
                                 </a>
                                 <div class="media-body">
                                     <div class="post-cat-group m-b-xs-10">
                                         <a href="business.html"
-                                            class="post-cat cat-btn bg-color-green-three">LIFESTYLE</a>
+                                           class="post-cat cat-btn bg-color-green-three">LIFESTYLE</a>
                                     </div>
                                     <h3 class="axil-post-title hover-line"><a href="post-format-standard.html">Unmatched
-                                            Toner
-                                            Cartridge Quality 20 Less
-                                            Than Oem Price</a></h3>
+                                        Toner
+                                        Cartridge Quality 20 Less
+                                        Than Oem Price</a></h3>
                                     <div class="post-metas">
                                         <ul class="list-inline">
                                             <li>By <a href="#">Amachea Jajah</a></li>
@@ -431,15 +403,16 @@
 
                             <div class="media post-block top-story-post-block post-block__on-dark-bg m-b-xs-30">
                                 <a href="post-format-standard.html" class="align-self-center"><img class=" m-r-xs-30"
-                                        src="{% static 'techblog/assets/images/trending-stories/top-stories-2.jpg' %}" alt=""></a>
+                                                                                                   src="{% static 'techblog/assets/images/trending-stories/top-stories-2.jpg' %}"
+                                                                                                   alt=""></a>
                                 <div class="media-body">
                                     <div class="post-cat-group m-b-xs-10">
                                         <a href="business.html" class="post-cat cat-btn bg-color-blue-four">COOKING</a>
                                     </div>
                                     <h3 class="axil-post-title hover-line"><a href="post-format-standard.html">Not All
-                                            Blank
-                                            Cassettes Are Created
-                                            Equal</a>
+                                        Blank
+                                        Cassettes Are Created
+                                        Equal</a>
                                     </h3>
                                     <div class="post-metas">
                                         <ul class="list-inline">
@@ -452,15 +425,16 @@
 
                             <div class="media post-block top-story-post-block post-block__on-dark-bg m-b-xs-30">
                                 <a href="post-format-standard.html" class="align-self-center"><img class=" m-r-xs-30"
-                                        src="{% static 'techblog/assets/images/trending-stories/top-stories-3.jpg' %}" alt=""></a>
+                                                                                                   src="{% static 'techblog/assets/images/trending-stories/top-stories-3.jpg' %}"
+                                                                                                   alt=""></a>
                                 <div class="media-body">
                                     <div class="post-cat-group m-b-xs-10">
                                         <a href="business.html" class="post-cat cat-btn bg-color-red-two">MEDICINE</a>
                                     </div>
                                     <h3 class="axil-post-title hover-line"><a href="post-format-standard.html">Microsoft
-                                            Patch
-                                            Management For Home
-                                            Users</a></h3>
+                                        Patch
+                                        Management For Home
+                                        Users</a></h3>
                                     <div class="post-metas">
                                         <ul class="list-inline">
                                             <li>By <a href="#">Ahmad Nazeri</a></li>
@@ -472,16 +446,17 @@
 
                             <div class="media post-block top-story-post-block post-block__on-dark-bg m-b-xs-30">
                                 <a href="post-format-standard.html" class="align-self-center">
-                                    <img class=" m-r-xs-30" src="{% static 'techblog/assets/images/trending-stories/top-stories-4.jpg' %}"
-                                        alt="">
+                                    <img class=" m-r-xs-30"
+                                         src="{% static 'techblog/assets/images/trending-stories/top-stories-4.jpg' %}"
+                                         alt="">
                                 </a>
                                 <div class="media-body">
                                     <div class="post-cat-group m-b-xs-10">
                                         <a href="business.html"
-                                            class="post-cat cat-btn bg-color-purple-one">SWIMMING</a>
+                                           class="post-cat cat-btn bg-color-purple-one">SWIMMING</a>
                                     </div>
                                     <h3 class="axil-post-title hover-line"><a href="post-format-standard.html">An Ugly
-                                            Myspace Profile Will Sure Ruin Your Reputation</a></h3>
+                                        Myspace Profile Will Sure Ruin Your Reputation</a></h3>
                                     <div class="post-metas">
                                         <ul class="list-inline">
                                             <li>By <a href="#">Amachea Jajah</a></li>
@@ -508,16 +483,17 @@
                         <main class="axil-content">
                             <div class="media post-block post-block__mid m-b-xs-30">
                                 <a href="post-format-standard.html" class="align-self-center"><img class=" m-r-xs-30"
-                                        src="{% static 'techblog/assets/images/post/post-img-3.jpg' %}" alt=""></a>
+                                                                                                   src="{% static 'techblog/assets/images/post/post-img-3.jpg' %}"
+                                                                                                   alt=""></a>
                                 <div class="media-body">
                                     <div class="post-cat-group m-b-xs-10">
                                         <a href="business.html" class="post-cat cat-btn bg-color-blue-one">TRAVEL</a>
                                     </div>
                                     <h3 class="axil-post-title hover-line hover-line"><a
                                             href="post-format-standard.html">Will The
-                                            Democrats
-                                            Be Able To Reverse The
-                                            Online Gambling Ban</a></h3>
+                                        Democrats
+                                        Be Able To Reverse The
+                                        Online Gambling Ban</a></h3>
                                     <p class="mid">Aliquam erat volutpat. Nam ut bibendum eros. Nam vel nulla est.
                                         Quisque fermentum sapien.</p>
                                     <div class="post-metas">
@@ -530,16 +506,17 @@
                             <!-- End of .post-block -->
                             <div class="media post-block post-block__mid m-b-xs-30">
                                 <a href="post-format-standard.html" class="align-self-center"><img class=" m-r-xs-30"
-                                        src="{% static 'techblog/assets/images/post/post-img-4.jpg' %}" alt=""></a>
+                                                                                                   src="{% static 'techblog/assets/images/post/post-img-4.jpg' %}"
+                                                                                                   alt=""></a>
                                 <div class="media-body">
                                     <div class="post-cat-group m-b-xs-10">
                                         <a href="business.html" class="post-cat cat-btn bg-color-blue-two">SCIENCE</a>
                                     </div>
                                     <h3 class="axil-post-title hover-line hover-line"><a
                                             href="post-format-standard.html">Old
-                                            Fashioned Recipe
-                                            For Preventing
-                                            Allergies And Chemical Sensitivities</a></h3>
+                                        Fashioned Recipe
+                                        For Preventing
+                                        Allergies And Chemical Sensitivities</a></h3>
                                     <p class="mid">Cras sit amet maximus odio, finibus pulvinar nisl. Praesent sed
                                         sagittis diam. Integer sed volutpat mi, in ultrices tellus.</p>
                                     <div class="post-metas">
@@ -552,17 +529,18 @@
                             <!-- End of .post-block -->
                             <div class="media post-block post-block__mid m-b-xs-30">
                                 <a href="post-format-standard.html" class="align-self-center"><img class=" m-r-xs-30"
-                                        src="{% static 'techblog/assets/images/post/post-img-5.jpg' %}" alt=""></a>
+                                                                                                   src="{% static 'techblog/assets/images/post/post-img-5.jpg' %}"
+                                                                                                   alt=""></a>
                                 <div class="media-body">
                                     <div class="post-cat-group m-b-xs-10">
                                         <a href="business.html"
-                                            class="post-cat cat-btn bg-color-purple-one">PHILOSOPHY</a>
+                                           class="post-cat cat-btn bg-color-purple-one">PHILOSOPHY</a>
                                     </div>
                                     <h3 class="axil-post-title hover-line hover-line"><a
                                             href="post-format-standard.html">Barbeque
-                                            Techniques
-                                            Two Methods To
-                                            Consider</a></h3>
+                                        Techniques
+                                        Two Methods To
+                                        Consider</a></h3>
                                     <p class="mid">Nulla facilisi. Aenean scelerisque elit nec placerat fermentum. Duis
                                         eu urna.</p>
                                     <div class="post-metas">
@@ -575,16 +553,17 @@
                             <!-- End of .post-block -->
                             <div class="media post-block post-block__mid m-b-xs-30">
                                 <a href="post-format-standard.html" class="align-self-center"><img class=" m-r-xs-30"
-                                        src="{% static 'techblog/assets/images/post/post-img-6.jpg' %}" alt=""></a>
+                                                                                                   src="{% static 'techblog/assets/images/post/post-img-6.jpg' %}"
+                                                                                                   alt=""></a>
                                 <div class="media-body">
                                     <div class="post-cat-group m-b-xs-10">
                                         <a href="business.html" class="post-cat cat-btn bg-color-purple-two">BEAUTY</a>
                                     </div>
                                     <h3 class="axil-post-title hover-line hover-line"><a
                                             href="post-format-standard.html">Sony
-                                            Laptops Are
-                                            Still Part Of The Sony
-                                            Family</a></h3>
+                                        Laptops Are
+                                        Still Part Of The Sony
+                                        Family</a></h3>
                                     <p class="mid">Curabitur egestas est vitae sem blandit tincidunt. Nunc cursus
                                         interdum odio sit amet gravida.</p>
                                     <div class="post-metas">
@@ -597,16 +576,17 @@
                             <!-- End of .post-block -->
                             <div class="media post-block post-block__mid m-b-xs-30">
                                 <a href="post-format-standard.html" class="align-self-center"><img class=" m-r-xs-30"
-                                        src="{% static 'techblog/assets/images/post/post-img-7.jpg' %}" alt=""></a>
+                                                                                                   src="{% static 'techblog/assets/images/post/post-img-7.jpg' %}"
+                                                                                                   alt=""></a>
                                 <div class="media-body">
                                     <div class="post-cat-group m-b-xs-10">
                                         <a href="business.html"
-                                            class="post-cat cat-btn bg-color-blue-three">ADVERTISING</a>
+                                           class="post-cat cat-btn bg-color-blue-three">ADVERTISING</a>
                                     </div>
                                     <h3 class="axil-post-title hover-line hover-line"><a
                                             href="post-format-standard.html">Hypnotherapy For
-                                            Motivation Getting The
-                                            Drive Back</a></h3>
+                                        Motivation Getting The
+                                        Drive Back</a></h3>
                                     <p class="mid">Nullam arcu purus, elementum ut tincidunt sit amet, facilisis quis
                                         quam. Pellentesque fringilla leo et commodo pulvinar.</p>
                                     <div class="post-metas">
@@ -619,16 +599,17 @@
                             <!-- End of .post-block -->
                             <div class="media post-block post-block__mid m-b-xs-30">
                                 <a href="post-format-standard.html" class="align-self-center"><img class=" m-r-xs-30"
-                                        src="{% static 'techblog/assets/images/post/post-img-8.jpg' %}" alt=""></a>
+                                                                                                   src="{% static 'techblog/assets/images/post/post-img-8.jpg' %}"
+                                                                                                   alt=""></a>
                                 <div class="media-body">
                                     <div class="post-cat-group m-b-xs-10">
                                         <a href="business.html"
-                                            class="post-cat cat-btn bg-color-green-two">TECHNOLOGY</a>
+                                           class="post-cat cat-btn bg-color-green-two">TECHNOLOGY</a>
                                     </div>
                                     <h3 class="axil-post-title hover-line hover-line"><a
                                             href="post-format-standard.html">Going
-                                            Wireless With
-                                            Your Headphones</a></h3>
+                                        Wireless With
+                                        Your Headphones</a></h3>
                                     <p class="mid">Donec ac felis purus. Nam quis justo vel tortor imperdiet efficitur.
                                         Ut ac sagittis magna. Ut tincidunt rhoncus lacus.</p>
                                     <div class="post-metas">
@@ -641,15 +622,16 @@
                             <!-- End of .post-block -->
                             <div class="media post-block post-block__mid m-b-xs-30">
                                 <a href="post-format-standard.html" class="align-self-center"><img class=" m-r-xs-30"
-                                        src="{% static 'techblog/assets/images/post/post-img-9.jpg' %}" alt=""></a>
+                                                                                                   src="{% static 'techblog/assets/images/post/post-img-9.jpg' %}"
+                                                                                                   alt=""></a>
                                 <div class="media-body">
                                     <div class="post-cat-group m-b-xs-10">
                                         <a href="business.html"
-                                            class="post-cat cat-btn bg-color-green-three">MOTIVATION</a>
+                                           class="post-cat cat-btn bg-color-green-three">MOTIVATION</a>
                                     </div>
                                     <h3 class="axil-post-title hover-line hover-line"><a
                                             href="post-format-standard.html">How To Fly A Private Jet On Your Next
-                                            Trip</a>
+                                        Trip</a>
                                     </h3>
                                     <p class="mid">Pellentesque ullamcorper nibh nec lacus lobortis lobortis. Praesent
                                         sit amet venenatis nibh. </p>
@@ -709,13 +691,13 @@
                                 </div>
                                 <div class="category-carousel">
                                     <div class="owl-carousel owl-theme" data-owl-items="1" data-owl-loop="true"
-                                        data-owl-autoplay="true" data-owl-dots="false" data-owl-nav="false"
-                                        data-owl-margin="10">
+                                         data-owl-autoplay="true" data-owl-dots="false" data-owl-nav="false"
+                                         data-owl-margin="10">
                                         <div class="cat-carousel-inner">
                                             <ul class="category-list-wrapper">
                                                 <li class="category-list perfect-square">
                                                     <a href="post-format-standard.html" class="list-inner"
-                                                        style="background-image: url({% static 'techblog/assets/images/category-bg/category-bg-1.png' %})">
+                                                       style="background-image: url({% static 'techblog/assets/images/category-bg/category-bg-1.png' %})">
                                                         <div class="post-info-wrapper overlay">
                                                             <div class="counter-inner"><span class="counter">20</span>+
                                                             </div>
@@ -727,7 +709,7 @@
                                                 <!-- End of .category-list -->
                                                 <li class="category-list perfect-square">
                                                     <a href="post-format-standard.html" class="list-inner"
-                                                        style="background-image: url({% static 'techblog/assets/images/category-bg/category-bg-2.png' %})">
+                                                       style="background-image: url({% static 'techblog/assets/images/category-bg/category-bg-2.png' %})">
                                                         <div class="post-info-wrapper overlay">
                                                             <div class="counter-inner"><span class="counter">100</span>+
                                                             </div>
@@ -739,7 +721,7 @@
                                                 <!-- End of .category-list -->
                                                 <li class="category-list perfect-square">
                                                     <a href="post-format-standard.html" class="list-inner"
-                                                        style="background-image: url({% static 'techblog/assets/images/category-bg/category-bg-3.png' %})">
+                                                       style="background-image: url({% static 'techblog/assets/images/category-bg/category-bg-3.png' %})">
                                                         <div class="post-info-wrapper overlay">
                                                             <div class="counter-inner"><span class="counter">10</span>+
                                                             </div>
@@ -751,7 +733,7 @@
                                                 <!-- End of .category-list -->
                                                 <li class="category-list perfect-square">
                                                     <a href="post-format-standard.html" class="list-inner"
-                                                        style="background-image: url({% static 'techblog/assets/images/category-bg/category-bg-4.png' %})">
+                                                       style="background-image: url({% static 'techblog/assets/images/category-bg/category-bg-4.png' %})">
                                                         <div class="post-info-wrapper overlay">
                                                             <div class="counter-inner"><span class="counter">10</span>+
                                                             </div>
@@ -769,7 +751,7 @@
                                             <ul class="category-list-wrapper">
                                                 <li class="category-list perfect-square">
                                                     <a href="post-format-standard.html" class="list-inner"
-                                                        style="background-image: url({% static 'techblog/assets/images/category-bg/category-bg-5.jpg' %})">
+                                                       style="background-image: url({% static 'techblog/assets/images/category-bg/category-bg-5.jpg' %})">
                                                         <div class="post-info-wrapper overlay">
                                                             <div class="counter-inner"><span class="counter">20</span>+
                                                             </div>
@@ -781,7 +763,7 @@
                                                 <!-- End of .category-list -->
                                                 <li class="category-list perfect-square">
                                                     <a href="post-format-standard.html" class="list-inner"
-                                                        style="background-image: url({% static 'techblog/assets/images/category-bg/category-bg-6.jpg' %})">
+                                                       style="background-image: url({% static 'techblog/assets/images/category-bg/category-bg-6.jpg' %})">
                                                         <div class="post-info-wrapper overlay">
                                                             <div class="counter-inner"><span class="counter">100</span>+
                                                             </div>
@@ -793,7 +775,7 @@
                                                 <!-- End of .category-list -->
                                                 <li class="category-list perfect-square">
                                                     <a href="post-format-standard.html" class="list-inner"
-                                                        style="background-image: url({% static 'techblog/assets/images/category-bg/category-bg-7.jpg' %})">
+                                                       style="background-image: url({% static 'techblog/assets/images/category-bg/category-bg-7.jpg' %})">
                                                         <div class="post-info-wrapper overlay">
                                                             <div class="counter-inner"><span class="counter">10</span>+
                                                             </div>
@@ -805,7 +787,7 @@
                                                 <!-- End of .category-list -->
                                                 <li class="category-list perfect-square">
                                                     <a href="post-format-standard.html" class="list-inner"
-                                                        style="background-image: url({% static 'techblog/assets/images/category-bg/category-bg-8.jpg' %})">
+                                                       style="background-image: url({% static 'techblog/assets/images/category-bg/category-bg-8.jpg' %})">
                                                         <div class="post-info-wrapper overlay">
                                                             <div class="counter-inner"><span class="counter">10</span>+
                                                             </div>
@@ -912,21 +894,22 @@
                                         <div class="axil-content">
                                             <div class="media post-block post-block__small">
                                                 <a href="post-format-standard.html" class="align-self-center"><img
-                                                        class=" m-r-xs-30" src="{% static 'techblog/assets/images/media/small-media-1.jpg' %}"
+                                                        class=" m-r-xs-30"
+                                                        src="{% static 'techblog/assets/images/media/small-media-1.jpg' %}"
                                                         alt="media image"></a>
                                                 <div class="media-body">
                                                     <div class="post-cat-group">
                                                         <a href="post-format-standard.html"
-                                                            class="post-cat color-blue-three">BEAUTY,</a>
+                                                           class="post-cat color-blue-three">BEAUTY,</a>
                                                         <a href="post-format-standard.html"
-                                                            class="post-cat color-yellow-one">TRADE,</a>
+                                                           class="post-cat color-yellow-one">TRADE,</a>
                                                         <a href="post-format-standard.html"
-                                                            class="post-cat color-red-one">MUSIC</a>
+                                                           class="post-cat color-red-one">MUSIC</a>
                                                     </div>
                                                     <h4 class="axil-post-title hover-line hover-line"><a
                                                             href="post-format-standard.html">Stocking Your Restaurant
-                                                            Kitchen Finding Reliable
-                                                            Sellers</a></h4>
+                                                        Kitchen Finding Reliable
+                                                        Sellers</a></h4>
                                                     <div class="post-metas">
                                                         <ul class="list-inline">
                                                             <li>By <a href="#">Amachea Jajah</a></li>
@@ -937,16 +920,17 @@
                                             <!-- End of .post-block -->
                                             <div class="media post-block post-block__small">
                                                 <a href="post-format-standard.html" class="align-self-center"><img
-                                                        class=" m-r-xs-30" src="{% static 'techblog/assets/images/media/small-media-2.jpg' %}"
+                                                        class=" m-r-xs-30"
+                                                        src="{% static 'techblog/assets/images/media/small-media-2.jpg' %}"
                                                         alt="media image"></a>
                                                 <div class="media-body">
                                                     <a href="post-format-standard.html"
-                                                        class="post-cat color-green-three">TRAVEL</a>
+                                                       class="post-cat color-green-three">TRAVEL</a>
                                                     <h4 class="axil-post-title hover-line hover-line"><a
                                                             href="post-format-standard.html">Trip
-                                                            To Iqaluit In Nunavut A
-                                                            Canadian Arctic
-                                                            City</a>
+                                                        To Iqaluit In Nunavut A
+                                                        Canadian Arctic
+                                                        City</a>
                                                     </h4>
                                                     <div class="post-metas">
                                                         <ul class="list-inline">
@@ -958,14 +942,15 @@
                                             <!-- End of .post-block -->
                                             <div class="media post-block post-block__small">
                                                 <a href="post-format-standard.html" class="align-self-center"><img
-                                                        class=" m-r-xs-30" src="{% static 'techblog/assets/images/media/small-media-3.jpg' %}"
+                                                        class=" m-r-xs-30"
+                                                        src="{% static 'techblog/assets/images/media/small-media-3.jpg' %}"
                                                         alt="media image"></a>
                                                 <div class="media-body">
                                                     <a href="post-format-standard.html"
-                                                        class="post-cat color-red-two">SPORTS</a>
+                                                       class="post-cat color-red-two">SPORTS</a>
                                                     <h4 class="axil-post-title hover-line hover-line"><a
                                                             href="post-format-standard.html">Thousands Now Adware
-                                                            Removal Who Never Thought They Could</a></h4>
+                                                        Removal Who Never Thought They Could</a></h4>
                                                     <div class="post-metas">
                                                         <ul class="list-inline">
                                                             <li>By <a href="#">Ahmad Nazeri</a></li>
@@ -976,15 +961,16 @@
                                             <!-- End of .post-block -->
                                             <div class="media post-block post-block__small">
                                                 <a href="post-format-standard.html" class="align-self-center"><img
-                                                        class=" m-r-xs-30" src="{% static 'techblog/assets/images/media/small-media-4.jpg' %}"
+                                                        class=" m-r-xs-30"
+                                                        src="{% static 'techblog/assets/images/media/small-media-4.jpg' %}"
                                                         alt="media image"></a>
                                                 <div class="media-body">
                                                     <a href="post-format-standard.html"
-                                                        class="post-cat color-blue-one">FASHION</a>
+                                                       class="post-cat color-blue-one">FASHION</a>
                                                     <h4 class="axil-post-title hover-line hover-line"><a
                                                             href="post-format-standard.html">To
-                                                            Keep Makeup Looking Fresh
-                                                            Take A Powder</a></h4>
+                                                        Keep Makeup Looking Fresh
+                                                        Take A Powder</a></h4>
                                                     <div class="post-metas">
                                                         <ul class="list-inline">
                                                             <li>By <a href="#">Sergio Pliego</a></li>
@@ -1001,15 +987,16 @@
                                         <div class="axil-content">
                                             <div class="media post-block post-block__small">
                                                 <a href="post-format-standard.html" class="align-self-center"><img
-                                                        class=" m-r-xs-30" src="{% static 'techblog/assets/images/media/small-media-3.jpg' %}"
+                                                        class=" m-r-xs-30"
+                                                        src="{% static 'techblog/assets/images/media/small-media-3.jpg' %}"
                                                         alt="media image"></a>
                                                 <div class="media-body">
                                                     <a href="post-format-standard.html"
-                                                        class="post-cat color-blue-one">FASHION</a>
+                                                       class="post-cat color-blue-one">FASHION</a>
                                                     <h4 class="axil-post-title hover-line hover-line"><a
                                                             href="post-format-standard.html">To
-                                                            Keep Makeup Looking Fresh
-                                                            Take A Powder</a></h4>
+                                                        Keep Makeup Looking Fresh
+                                                        Take A Powder</a></h4>
                                                     <div class="post-metas">
                                                         <ul class="list-inline">
                                                             <li>By <a href="#">Sergio Pliego</a></li>
@@ -1020,15 +1007,16 @@
                                             <!-- End of .post-block -->
                                             <div class="media post-block post-block__small">
                                                 <a href="post-format-standard.html" class="align-self-center"><img
-                                                        class=" m-r-xs-30" src="{% static 'techblog/assets/images/media/small-media-2.jpg' %}"
+                                                        class=" m-r-xs-30"
+                                                        src="{% static 'techblog/assets/images/media/small-media-2.jpg' %}"
                                                         alt="media image"></a>
                                                 <div class="media-body">
                                                     <a href="#post-format-standard.html"
-                                                        class="post-cat color-blue-three">BEAUTY</a>
+                                                       class="post-cat color-blue-three">BEAUTY</a>
                                                     <h4 class="axil-post-title hover-line hover-line"><a
                                                             href="post-format-standard.html">Stocking Your Restaurant
-                                                            Kitchen Finding Reliable
-                                                            Sellers</a></h4>
+                                                        Kitchen Finding Reliable
+                                                        Sellers</a></h4>
                                                     <div class="post-metas">
                                                         <ul class="list-inline">
                                                             <li>By <a href="#">Amachea Jajah</a></li>
@@ -1039,16 +1027,17 @@
                                             <!-- End of .post-block -->
                                             <div class="media post-block post-block__small">
                                                 <a href="post-format-standard.html" class="align-self-center"><img
-                                                        class=" m-r-xs-30" src="{% static 'techblog/assets/images/media/small-media-1.jpg' %}"
+                                                        class=" m-r-xs-30"
+                                                        src="{% static 'techblog/assets/images/media/small-media-1.jpg' %}"
                                                         alt="media image"></a>
                                                 <div class="media-body">
                                                     <a href="post-format-standard.html"
-                                                        class="post-cat color-green-three">TRAVEL</a>
+                                                       class="post-cat color-green-three">TRAVEL</a>
                                                     <h4 class="axil-post-title hover-line hover-line"><a
                                                             href="post-format-standard.html">Trip
-                                                            To Iqaluit In Nunavut A
-                                                            Canadian Arctic
-                                                            City</a>
+                                                        To Iqaluit In Nunavut A
+                                                        Canadian Arctic
+                                                        City</a>
                                                     </h4>
                                                     <div class="post-metas">
                                                         <ul class="list-inline">
@@ -1060,17 +1049,18 @@
                                             <!-- End of .post-block -->
                                             <div class="media post-block post-block__small">
                                                 <a href="post-format-standard.html" class="align-self-center"><img
-                                                        class=" m-r-xs-30" src="{% static 'techblog/assets/images/media/small-media-4.jpg' %}"
+                                                        class=" m-r-xs-30"
+                                                        src="{% static 'techblog/assets/images/media/small-media-4.jpg' %}"
                                                         alt="media image"></a>
                                                 <div class="media-body">
                                                     <a href="post-format-standard.html"
-                                                        class="post-cat color-red-two">SPORTS</a>
+                                                       class="post-cat color-red-two">SPORTS</a>
                                                     <h4 class="axil-post-title hover-line hover-line"><a
                                                             href="post-format-standard.html">RCB
-                                                            vs RR, IPL 2019:
-                                                            Bangalore, Rajasthan desperate
-                                                            for
-                                                            win</a></h4>
+                                                        vs RR, IPL 2019:
+                                                        Bangalore, Rajasthan desperate
+                                                        for
+                                                        win</a></h4>
                                                     <div class="post-metas">
                                                         <ul class="list-inline">
                                                             <li>By <a href="#">Ahmad Nazeri</a></li>
@@ -1087,17 +1077,18 @@
                                         <div class="axil-content">
                                             <div class="media post-block post-block__small">
                                                 <a href="post-format-standard.html" class="align-self-center"><img
-                                                        class=" m-r-xs-30" src="{% static 'techblog/assets/images/media/small-media-2.jpg' %}"
+                                                        class=" m-r-xs-30"
+                                                        src="{% static 'techblog/assets/images/media/small-media-2.jpg' %}"
                                                         alt="media image"></a>
                                                 <div class="media-body">
                                                     <a href="post-format-standard.html"
-                                                        class="post-cat color-red-two">SPORTS</a>
+                                                       class="post-cat color-red-two">SPORTS</a>
                                                     <h4 class="axil-post-title hover-line hover-line"><a
                                                             href="post-format-standard.html">RCB
-                                                            vs RR, IPL 2019:
-                                                            Bangalore, Rajasthan desperate
-                                                            for
-                                                            win</a></h4>
+                                                        vs RR, IPL 2019:
+                                                        Bangalore, Rajasthan desperate
+                                                        for
+                                                        win</a></h4>
                                                     <div class="post-metas">
                                                         <ul class="list-inline">
                                                             <li>By <a href="#">Ahmad Nazeri</a></li>
@@ -1108,15 +1099,16 @@
                                             <!-- End of .post-block -->
                                             <div class="media post-block post-block__small">
                                                 <a href="post-format-standard.html" class="align-self-center"><img
-                                                        class=" m-r-xs-30" src="{% static 'techblog/assets/images/media/small-media-1.jpg' %}"
+                                                        class=" m-r-xs-30"
+                                                        src="{% static 'techblog/assets/images/media/small-media-1.jpg' %}"
                                                         alt="media image"></a>
                                                 <div class="media-body">
                                                     <a href="post-format-standard.html"
-                                                        class="post-cat color-blue-three">BEAUTY</a>
+                                                       class="post-cat color-blue-three">BEAUTY</a>
                                                     <h4 class="axil-post-title hover-line hover-line"><a
                                                             href="post-format-standard.html">Stocking Your Restaurant
-                                                            Kitchen Finding Reliable
-                                                            Sellers</a></h4>
+                                                        Kitchen Finding Reliable
+                                                        Sellers</a></h4>
                                                     <div class="post-metas">
                                                         <ul class="list-inline">
                                                             <li>By <a href="#">Amachea Jajah</a></li>
@@ -1127,16 +1119,17 @@
                                             <!-- End of .post-block -->
                                             <div class="media post-block post-block__small">
                                                 <a href="post-format-standard.html" class="align-self-center"><img
-                                                        class=" m-r-xs-30" src="{% static 'techblog/assets/images/media/small-media-3.jpg' %}"
+                                                        class=" m-r-xs-30"
+                                                        src="{% static 'techblog/assets/images/media/small-media-3.jpg' %}"
                                                         alt="media image"></a>
                                                 <div class="media-body">
                                                     <a href="post-format-standard.html"
-                                                        class="post-cat color-green-three">TRAVEL</a>
+                                                       class="post-cat color-green-three">TRAVEL</a>
                                                     <h4 class="axil-post-title hover-line hover-line"><a
                                                             href="post-format-standard.html">Trip
-                                                            To Iqaluit In Nunavut A
-                                                            Canadian Arctic
-                                                            City</a>
+                                                        To Iqaluit In Nunavut A
+                                                        Canadian Arctic
+                                                        City</a>
                                                     </h4>
                                                     <div class="post-metas">
                                                         <ul class="list-inline">
@@ -1149,15 +1142,16 @@
                                             <!-- End of .post-block -->
                                             <div class="media post-block post-block__small">
                                                 <a href="post-format-standard.html" class="align-self-center"><img
-                                                        class=" m-r-xs-30" src="{% static 'techblog/assets/images/media/small-media-4.jpg' %}"
+                                                        class=" m-r-xs-30"
+                                                        src="{% static 'techblog/assets/images/media/small-media-4.jpg' %}"
                                                         alt="media image"></a>
                                                 <div class="media-body">
                                                     <a href="post-format-standard.html"
-                                                        class="post-cat color-blue-one">FASHION</a>
+                                                       class="post-cat color-blue-one">FASHION</a>
                                                     <h4 class="axil-post-title hover-line hover-line"><a
                                                             href="post-format-standard.html">To
-                                                            Keep Makeup Looking Fresh
-                                                            Take A Powder</a></h4>
+                                                        Keep Makeup Looking Fresh
+                                                        Take A Powder</a></h4>
                                                     <div class="post-metas">
                                                         <ul class="list-inline">
                                                             <li>By <a href="#">Sergio Pliego</a></li>
@@ -1182,7 +1176,7 @@
                                     <ul class="instagram-post-list-wrapper">
                                         <li class="instagram-post-list perfect-square">
                                             <a href="#" class="list-inner"
-                                                style="background-image: url({% static 'techblog/assets/images/instagram-post/instagram-post-1.jpg' %})">
+                                               style="background-image: url({% static 'techblog/assets/images/instagram-post/instagram-post-1.jpg' %})">
                                                 <div class="post-info-wrapper overlay">
                                                     <div class="post-info">
                                                         <i class="feather icon-heart"></i>
@@ -1201,7 +1195,7 @@
                                         <!-- End of .instagram-post-list -->
                                         <li class="instagram-post-list perfect-square">
                                             <a href="#" class="list-inner"
-                                                style="background-image: url({% static 'techblog/assets/images/instagram-post/instagram-post-2.jpg' %})">
+                                               style="background-image: url({% static 'techblog/assets/images/instagram-post/instagram-post-2.jpg' %})">
                                                 <div class="post-info-wrapper overlay">
                                                     <div class="post-info">
                                                         <i class="feather icon-heart"></i>
@@ -1220,7 +1214,7 @@
                                         <!-- End of .instagram-post-list -->
                                         <li class="instagram-post-list perfect-square">
                                             <a href="#" class="list-inner"
-                                                style="background-image: url({% static 'techblog/assets/images/instagram-post/instagram-post-3.jpg' %})">
+                                               style="background-image: url({% static 'techblog/assets/images/instagram-post/instagram-post-3.jpg' %})">
                                                 <div class="post-info-wrapper overlay">
                                                     <div class="post-info">
                                                         <i class="feather icon-heart"></i>
@@ -1239,7 +1233,7 @@
                                         <!-- End of .instagram-post-list -->
                                         <li class="instagram-post-list perfect-square">
                                             <a href="#" class="list-inner"
-                                                style="background-image: url({% static 'techblog/assets/images/instagram-post/instagram-post-4.jpg' %})">
+                                               style="background-image: url({% static 'techblog/assets/images/instagram-post/instagram-post-4.jpg' %})">
                                                 <div class="post-info-wrapper overlay">
                                                     <div class="post-info">
                                                         <i class="feather icon-heart"></i>
@@ -1258,7 +1252,7 @@
                                         <!-- End of .instagram-post-list -->
                                         <li class="instagram-post-list perfect-square">
                                             <a href="#" class="list-inner"
-                                                style="background-image: url({% static 'techblog/assets/images/instagram-post/instagram-post-5.jpg' %})">
+                                               style="background-image: url({% static 'techblog/assets/images/instagram-post/instagram-post-5.jpg' %})">
                                                 <div class="post-info-wrapper overlay">
                                                     <div class="post-info">
                                                         <i class="feather icon-heart"></i>
@@ -1277,7 +1271,7 @@
                                         <!-- End of .instagram-post-list -->
                                         <li class="instagram-post-list perfect-square">
                                             <a href="#" class="list-inner"
-                                                style="background-image: url({% static 'techblog/assets/images/instagram-post/instagram-post-6.jpg' %})">
+                                               style="background-image: url({% static 'techblog/assets/images/instagram-post/instagram-post-6.jpg' %})">
                                                 <div class="post-info-wrapper overlay">
                                                     <div class="post-info">
                                                         <i class="feather icon-heart"></i>
@@ -1326,15 +1320,16 @@
                         <div class="col-lg-3 col-md-4">
                             <div class="content-block m-b-xs-30">
                                 <a href="post-format-standard.html">
-                                    <img src="{% static 'techblog/assets/images/related-post/related-post-1.jpg' %}" alt="abstruct image"
-                                        class="img-fluid">
+                                    <img src="{% static 'techblog/assets/images/related-post/related-post-1.jpg' %}"
+                                         alt="abstruct image"
+                                         class="img-fluid">
                                     <div class="grad-overlay"></div>
                                 </a>
                                 <div class="media-caption">
                                     <div class="caption-content">
                                         <h3 class="axil-post-title hover-line hover-line"><a
                                                 href="post-format-standard.html">Barbecue Party Tips For A Truly Amazing
-                                                Event</a></h3>
+                                            Event</a></h3>
                                         <div class="caption-meta">
                                             By <a href="#">Martin Lambert</a>
                                         </div>
@@ -1348,19 +1343,20 @@
                         <div class="col-lg-3 col-md-4">
                             <div class="content-block m-b-xs-30">
                                 <a href="post-format-standard.html">
-                                    <img src="{% static 'techblog/assets/images/related-post/related-post-2.jpg' %}" alt="abstruct image"
-                                        class="img-fluid">
+                                    <img src="{% static 'techblog/assets/images/related-post/related-post-2.jpg' %}"
+                                         alt="abstruct image"
+                                         class="img-fluid">
                                     <div class="grad-overlay"></div>
                                 </a>
                                 <div class="media-caption">
                                     <div class="caption-content">
                                         <h3 class="axil-post-title hover-line hover-line"><a
                                                 href="post-format-standard.html">Grilling Tips For The Dog Days Of
-                                                Summer</a></h3>
+                                            Summer</a></h3>
                                         <div class="caption-meta">
                                             By <a href="#">Angu Tamba
 
-                                            </a>
+                                        </a>
                                         </div>
                                     </div>
                                     <!-- End of .content-inner -->
@@ -1372,15 +1368,16 @@
                         <div class="col-lg-3 col-md-4">
                             <div class="content-block m-b-xs-30">
                                 <a href="post-format-standard.html">
-                                    <img src="{% static 'techblog/assets/images/related-post/related-post-3.jpg' %}" alt="abstruct image"
-                                        class="img-fluid">
+                                    <img src="{% static 'techblog/assets/images/related-post/related-post-3.jpg' %}"
+                                         alt="abstruct image"
+                                         class="img-fluid">
                                     <div class="grad-overlay"></div>
                                 </a>
                                 <div class="media-caption">
                                     <div class="caption-content">
                                         <h3 class="axil-post-title hover-line hover-line"><a
                                                 href="post-format-standard.html">Smarter Food Choices 101 Tips For Busy
-                                                Women</a></h3>
+                                            Women</a></h3>
                                         <div class="caption-meta">
                                             By <a href="#">Naseema Al Morad</a>
                                         </div>
@@ -1394,8 +1391,9 @@
                         <div class="col-lg-3 col-md-4">
                             <div class="content-block m-b-xs-30">
                                 <a href="post-format-standard.html">
-                                    <img src="{% static 'techblog/assets/images/related-post/related-post-4.jpg' %}" alt="abstruct image"
-                                        class="img-fluid">
+                                    <img src="{% static 'techblog/assets/images/related-post/related-post-4.jpg' %}"
+                                         alt="abstruct image"
+                                         class="img-fluid">
                                     <div class="grad-overlay"></div>
                                 </a>
                                 <div class="media-caption">
@@ -1559,7 +1557,8 @@
                         <div class="col-md">
                             <div class="footer-logo-container">
                                 <a href="index.html">
-                                    <img src="{% static 'techblog/assets/images/logo-symbol.svg' %}" alt="footer logo" class="footer-logo">
+                                    <img src="{% static 'techblog/assets/images/logo-symbol.svg' %}" alt="footer logo"
+                                         class="footer-logo">
                                 </a>
                             </div>
                             <!-- End of .brand-logo-container -->

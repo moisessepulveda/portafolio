@@ -9,6 +9,7 @@ from wagtail import blocks
 from modelcluster.fields import ParentalKey
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from taggit.models import TaggedItemBase
+from wagtail.users.models import UserProfile
 
 
 class TechBlogHome(Page):
