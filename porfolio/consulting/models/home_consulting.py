@@ -81,6 +81,26 @@ class HomeConsulting(Page):
         )
      ],  null=True, use_json_field=True)
 
+
+    # --- home sección 6 --------------------------------------------------------------------------------------------------------
+    hero_team_title    = models.CharField(max_length=100, verbose_name='titulo nuestro equipo', default='')
+    hero_team_desc     = models.CharField(max_length=100, verbose_name='nuestro equipo descripción', default='')
+    hero_team_members  = StreamField([
+        ('card', blocks.StructBlock([
+            ('title', blocks.TextBlock(label='titulo')),
+            ('subtitle', blocks.TextBlock(label='subtitulo')),
+            ('description', blocks.RichTextBlock(label='descripcion')),
+            ])
+        )
+     ],  null=True, use_json_field=True)
+
+    # --- home sección 7 --------------------------------------------------------------------------------------------------------
+    hero_testimonials        = models.CharField(max_length=100, verbose_name='titulo testimonios', default='')
+    hero_testimonials_desc   = models.CharField(max_length=100, verbose_name='testimonios descripción', default='')
+
+
+
+
     content_panels = Page.content_panels + [
         MultiFieldPanel([
             FieldPanel('hero_over_title'),
@@ -122,12 +142,26 @@ class HomeConsulting(Page):
                 FieldPanel('hero_button_services_redirect')
             ])
 
-        ], heading='seccion 4'),
+        ], heading='seccion 4: Nuestra forma de trabajo'),
 
         MultiFieldPanel([
             FieldPanel('hero_process_title'),
             FieldPanel('hero_process_desc'),
             FieldPanel('hero_process_step'),
 
-        ], heading='seccion 5'),
+        ], heading='seccion 5:  Miembros del equipo'),
+
+        MultiFieldPanel([
+            FieldPanel('hero_team_title'),
+            FieldPanel('hero_team_desc'),
+            FieldPanel('hero_team_members'),        
+
+        ], heading='seccion 6:'),
+
+
+        MultiFieldPanel([
+            FieldPanel('hero_testimonials'),
+            FieldPanel('hero_testimonials_desc'),      
+
+        ], heading='seccion 7: Testimonios'),
     ]

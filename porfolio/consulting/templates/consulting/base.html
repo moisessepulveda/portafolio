@@ -174,7 +174,7 @@
                     <div class="banner-home__content pb-lg-60 pb-md-50 pb-sm-45 pb-xs-40">
                         <h6 class="sub-title color-white mb-20 mb-sm-15 mb-xs-10 d-inline-block"><span>{{ page.hero_over_title }}</span></h6>
                         <h1 class="title color-white fw-bold mb-20 mb-sm-15 mb-xs-10">{{ page.hero_title | title }}</h1>
-<
+
                         <div class="description font-la color-white mb-45 mb-md-30 mb-sm-25 mb-xs-20">
                             <p>{{ page.hero_title_description }}</p>
                         </div>
@@ -430,116 +430,41 @@
             <div class="row">
                 <div class="col-12">
                     <div class="our-team__content mb-60 mb-md-50 mb-sm-40 mb-xs-30 text-center">
-                        <span class="sub-title fw-500 color-red text-uppercase mb-sm-10 mb-xs-5 mb-15 d-block"><img src="{% static 'consulting/assets/img/home/line.svg' %}" class="img-fluid mr-10" alt=""> Our Member</span>
-                        <h2 class="title color-d_black">Professional Team</h2>
+                        <span class="sub-title fw-500 color-red text-uppercase mb-sm-10 mb-xs-5 mb-15 d-block"><img src="{% static 'consulting/assets/img/home/line.svg' %}" class="img-fluid mr-10" alt="">{{ page.hero_team_title}}</span>
+                        <h2 class="title color-d_black">{{ page.hero_team_desc}}</h2>
                     </div>
                 </div>
             </div>
 
-            <div class="row mb-minus-30">
-                <div class="col-xxl-3 col-lg-4 col-md-6">
-                    <div class="team-item team-item-three text-center mb-30 d-block overflow-hidden">
-                        <div class="media">
-                            <img src="{% static 'consulting/assets/img/team/team-item-1.jpg' %}" class="img-fluid" alt="">
+            <div class="row mb-minus-30 d-flex justify-content-center">
 
-                            <div class="social-profile">
-                                <ul>
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                </ul>
+                {% for member  in  page.hero_team_members %}
+                    <div class="col-xxl-3 col-lg-4 col-md-6">
+                        <div class="team-item team-item-three text-center mb-30 d-block overflow-hidden">
+                            <div class="media">
+                                <img src="{% static 'consulting/assets/img/team/team-item-1.jpg' %}" class="img-fluid" alt="">
+
+                                {% comment %} <div class="social-profile">
+                                    <ul>
+                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                    </ul>
+                                </div> {% endcomment %}
                             </div>
-                        </div>
 
-                        <div class="text d-flex align-items-center justify-content-center">
-                            <div class="left">
-                                <h5 class="title color-white">Stephen Larry</h5>
-                                <span class="position color-white font-la fw-500">Product Manager</span>
+                            <div class="text d-flex align-items-center justify-content-center">
+                                <div class="left">
+                                    <h5 class="title color-white">{{ member.value.title}}</h5>
+                                    <span class="position color-white font-la fw-500">{{ member.value.subtitle}}</span>
+                                </div>
                             </div>
+                        
                         </div>
-
-                        <a href="team-details.html" class="theme-btn text-uppercase">View Ddetails <i class="far fa-chevron-double-right"></i></a>
-                    </div>
-                </div><!-- team-item -->
-
-                <div class="col-xxl-3 col-lg-4 col-md-6">
-                    <div class="team-item team-item-three text-center mb-30 d-block overflow-hidden">
-                        <div class="media">
-                            <img src="{% static 'consulting/assets/img/team/team-item-1.jpg' %}" class="img-fluid" alt="">
-
-                            <div class="social-profile">
-                                <ul>
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="text d-flex align-items-center justify-content-center">
-                            <div class="left">
-                                <h5 class="title color-white">Nusrat Jahan</h5>
-                                <span class="position color-white font-la fw-500">Assistent Manager, Finance</span>
-                            </div>
-                        </div>
-
-                        <a href="team-details.html" class="theme-btn text-uppercase">View Ddetails <i class="far fa-chevron-double-right"></i></a>
-                    </div>
-                </div><!-- team-item -->
-
-                <div class="col-xxl-3 col-lg-4 col-md-6">
-                    <div class="team-item team-item-three text-center mb-30 d-block overflow-hidden">
-                        <div class="media">
-                            <img src="{% static 'consulting/assets/img/team/team-item-1.jpg' %}" class="img-fluid" alt="">
-
-                            <div class="social-profile">
-                                <ul>
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="text d-flex align-items-center justify-content-center">
-                            <div class="left">
-                                <h5 class="title color-white">Richard Paul</h5>
-                                <span class="position color-white font-la fw-500">Business Consulting</span>
-                            </div>
-                        </div>
-
-                        <a href="team-details.html" class="theme-btn text-uppercase">View Ddetails <i class="far fa-chevron-double-right"></i></a>
-                    </div>
-                </div><!-- team-item -->
-
-                <div class="col-xxl-3 col-lg-4 col-md-6">
-                    <div class="team-item team-item-three text-center mb-30 d-block overflow-hidden">
-                        <div class="media">
-                            <img src="{% static 'consulting/assets/img/team/team-item-1.jpg' %}" class="img-fluid" alt="">
-
-                            <div class="social-profile">
-                                <ul>
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="text d-flex align-items-center justify-content-center">
-                            <div class="left">
-                                <h5 class="title color-white">Elizabeth Linda</h5>
-                                <span class="position color-white font-la fw-500">Consulter Agency</span>
-                            </div>
-                        </div>
-
-                        <a href="team-details.html" class="theme-btn text-uppercase">View Ddetails <i class="far fa-chevron-double-right"></i></a>
-                    </div>
-                </div><!-- team-item -->
+                    </div><!-- team-item -->
+                {% endfor %}
+                
             </div>
         </div>
     </section>
@@ -551,8 +476,8 @@
             <div class="row align-items-center">
                 <div class="col-sm-9">
                     <div class="employee-friendly__content">
-                        <span class="sub-title fw-500 color-red text-uppercase mb-sm-10 mb-xs-5 mb-15 d-block"><img src="{% static 'consulting/assets/img/home/line.svg' %}" class="img-fluid mr-10" alt=""> testimonials</span>
-                        <h2 class="title color-pd_black">What people say About Us</h2>
+                        <span class="sub-title fw-500 color-red text-uppercase mb-sm-10 mb-xs-5 mb-15 d-block"><img src="{% static 'consulting/assets/img/home/line.svg' %}" class="img-fluid mr-10" alt="">{{ page.hero_testimonials}}</span>
+                        <h2 class="title color-pd_black">{{ page.hero_testimonials_desc}}</h2>
                     </div>
                 </div>
 
