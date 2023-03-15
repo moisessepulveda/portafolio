@@ -5,8 +5,10 @@ from wagtail.admin.panels import MultiFieldPanel, FieldPanel, FieldRowPanel
 from wagtail.core.fields import StreamField
 from wagtail.models import Page
 
+
+
 class HomeConsulting(Page):
-    # --- home sección 1 --------------------------------------------------------------------------------------------------------
+    # --- banner principal sección 1 --------------------------------------------------------------------------------------------------------
     # elementos titulo página principal
     hero_title                 = models.CharField(max_length=50, verbose_name='Título principal', default='Título')
     hero_over_title            = models.CharField(max_length=50, verbose_name='texto sobre titulo principal', default='',blank=True)
@@ -31,7 +33,7 @@ class HomeConsulting(Page):
     )
 
 
-    # --- home sección 2 --------------------------------------------------------------------------------------------------------
+    # --- resumen de servicios sección 2 --------------------------------------------------------------------------------------------------------
     hero_agile_develop              = models.CharField(max_length=50, verbose_name='item 1 titulo', default='item 1')
     hero_agile_develop_desc         = models.CharField(max_length=150, verbose_name='item descripción 1', default='')
 
@@ -42,7 +44,7 @@ class HomeConsulting(Page):
     hero_scalability_desc           = models.CharField(max_length=150, verbose_name='item descripción 3', default='')
 
 
-    # --- home sección 3 --------------------------------------------------------------------------------------------------------
+    # --- sobre nosotros sección 3 --------------------------------------------------------------------------------------------------------
     hero_title_company         = models.CharField(max_length=100, verbose_name='nuestra compañia titulo', default='nuestra compañia titulo')
     hero_our_company           = models.CharField(max_length=100, verbose_name='nuestra compañia', default='nuestra compañia')
     hero_our_company_desc      = models.CharField(max_length=200, verbose_name='nuestra compañia descripción', default='nuestra compañia descripción')
@@ -54,7 +56,7 @@ class HomeConsulting(Page):
     hero_company_customer_desc = models.CharField(max_length=200, verbose_name='customer review descripción', default='nuestra compañia descripción')
 
 
-    # --- home sección 4 --------------------------------------------------------------------------------------------------------
+    # --- banner de servicios sección 4 --------------------------------------------------------------------------------------------------------
     hero_services_title        = models.CharField(max_length=100, verbose_name='servicios titulo', default='servicios titulo')
     hero_services_desc         = models.CharField(max_length=200, verbose_name='servicios descripcion', default='servicios descripcion')
 
@@ -69,7 +71,7 @@ class HomeConsulting(Page):
     )
 
 
-    # --- home sección 5 --------------------------------------------------------------------------------------------------------
+    # --- Nuestra forma de trabajo  sección 5 --------------------------------------------------------------------------------------------------------
     hero_process_title   = models.CharField(max_length=100, verbose_name='titulo procesos', default='')
     hero_process_desc    = models.CharField(max_length=100, verbose_name='proceso descripción', default='')
     hero_process_step    = StreamField([
@@ -81,6 +83,44 @@ class HomeConsulting(Page):
         )
      ],  null=True, use_json_field=True)
 
+
+    # --- Miembros del equipo  sección 6 --------------------------------------------------------------------------------------------------------
+    hero_team_title    = models.CharField(max_length=100, verbose_name='titulo nuestro equipo', default='')
+    hero_team_desc     = models.CharField(max_length=100, verbose_name='nuestro equipo descripción', default='')
+    hero_team_members  = StreamField([
+        ('card', blocks.StructBlock([
+            ('title', blocks.TextBlock(label='titulo')),
+            ('subtitle', blocks.TextBlock(label='subtitulo')),
+            ('description', blocks.RichTextBlock(label='descripcion')),
+            ])
+        )
+     ],  null=True, use_json_field=True)
+
+    # --- Testimonios sección 7 --------------------------------------------------------------------------------------------------------
+    hero_testimonials        = models.CharField(max_length=100, verbose_name='titulo testimonios', default='')
+    hero_testimonials_desc   = models.CharField(max_length=100, verbose_name='testimonios descripción', default='')
+    hero_testimonials_cards   = StreamField([
+        ('card', blocks.StructBlock([
+            ('name', blocks.TextBlock(label='nombre')),
+            ('position', blocks.TextBlock(label='cargo')),
+            ('description', blocks.RichTextBlock(label='descripcion')),
+            ])
+        )
+     ],  null=True, use_json_field=True)
+
+
+
+    # --- footer sección 8 --------------------------------------------------------------------------------------------------------
+    hero_footer_terms_conditions    = models.CharField(max_length=150, verbose_name='link terminos y condiciones', default='')
+    hero_footer_privacy_policy      = models.CharField(max_length=150, verbose_name='link politica de privacidad', default='')
+    hero_footer_year                = models.CharField(max_length=4, verbose_name='año actual', default='')
+    hero_footer_company_name        = models.CharField(max_length=100, verbose_name='nombre empresa', default='')
+    hero_footer_company_desc        = models.CharField(max_length=300, verbose_name='descripcion empresa', default='')
+    
+
+
+
+
     content_panels = Page.content_panels + [
         MultiFieldPanel([
             FieldPanel('hero_over_title'),
@@ -91,7 +131,7 @@ class HomeConsulting(Page):
                 FieldPanel('hero_button_title'),
                 FieldPanel('hero_button_title_redirect')
             ])
-        ], heading='Sección principal'),
+        ], heading='seccion 1: banner principal'),
 
         MultiFieldPanel([
             FieldPanel('hero_agile_develop'),
@@ -101,7 +141,7 @@ class HomeConsulting(Page):
             FieldPanel('hero_scalability'),
             FieldPanel('hero_scalability_desc'),
 
-        ], heading='seccion 2'),
+        ], heading='seccion 2: resumen de servicios '),
 
         MultiFieldPanel([
             FieldPanel('hero_title_company'),
@@ -112,7 +152,7 @@ class HomeConsulting(Page):
             FieldPanel('hero_company_customer'),
             FieldPanel('hero_company_customer_desc'),
 
-        ], heading='seccion 3'),
+        ], heading='seccion 3: sobre nosotros'),
 
         MultiFieldPanel([
             FieldPanel('hero_services_title'),
@@ -122,12 +162,36 @@ class HomeConsulting(Page):
                 FieldPanel('hero_button_services_redirect')
             ])
 
-        ], heading='seccion 4'),
+        ], heading='seccion 4: banner de servicios'),
 
         MultiFieldPanel([
             FieldPanel('hero_process_title'),
             FieldPanel('hero_process_desc'),
             FieldPanel('hero_process_step'),
 
-        ], heading='seccion 5'),
+        ], heading='seccion 5:  Nuestra forma de trabajo '),
+
+        MultiFieldPanel([
+            FieldPanel('hero_team_title'),
+            FieldPanel('hero_team_desc'),
+            FieldPanel('hero_team_members'),        
+
+        ], heading='seccion 6: Miembros del equipo'),
+
+
+        MultiFieldPanel([
+            FieldPanel('hero_testimonials'),
+            FieldPanel('hero_testimonials_desc'),      
+            FieldPanel('hero_testimonials_cards'),      
+
+        ], heading='seccion 7: Testimonios'),
+
+        MultiFieldPanel([
+            FieldPanel('hero_footer_terms_conditions'),
+            FieldPanel('hero_footer_privacy_policy'),      
+            FieldPanel('hero_footer_year'),      
+            FieldPanel('hero_footer_company_name'),      
+            FieldPanel('hero_footer_company_desc'),      
+
+        ], heading='seccion 8: footer'),
     ]

@@ -174,7 +174,7 @@
                     <div class="banner-home__content pb-lg-60 pb-md-50 pb-sm-45 pb-xs-40">
                         <h6 class="sub-title color-white mb-20 mb-sm-15 mb-xs-10 d-inline-block"><span>{{ page.hero_over_title }}</span></h6>
                         <h1 class="title color-white fw-bold mb-20 mb-sm-15 mb-xs-10">{{ page.hero_title | title }}</h1>
-<
+
                         <div class="description font-la color-white mb-45 mb-md-30 mb-sm-25 mb-xs-20">
                             <p>{{ page.hero_title_description }}</p>
                         </div>
@@ -268,7 +268,7 @@
             <div class="row">
                 <div class="col-lg-3 col-sm-6">
                     <div class="our-company__meida">
-                        <img src="{% static 'consulting/assets/img/about/our-company-1.png' %}" alt="" class="img-fluid">
+                        <img src="{% static 'consulting/assets/img/about/our-company-1.jpg' %}" alt="" class="img-fluid">
 
                         <div class="years-experience overflow-hidden bg-red mt-20 mt-sm-10 mt-xs-10 text-center">
                             <div class="number mb-5 color-white">
@@ -282,7 +282,7 @@
 
                 <div class="col-lg-3 col-sm-6">
                     <div class="our-company__meida border-radius">
-                        <img src="{% static 'consulting/assets/img/about/our-company-2.png' %}" alt="" class="img-fluid">
+                        <img src="{% static 'consulting/assets/img/about/our-company-2.jpg' %}" alt="" class="img-fluid">
 
                         <div class="horizental-bar bg-red"></div>
                     </div>
@@ -351,7 +351,7 @@
     </div>
 
     <!-- planning-success start -->
-    <section class="planning-success pb-xs-80 pt-xs-80 pt-sm-100 pb-sm-100 pt-md-100 pb-md-100 pt-120 pb-130 overflow-hidden" style="background-image: url({% static 'consulting/assets/img/home/planning-success-bg.png' %});" >
+    <section class="planning-success pb-xs-80 pt-xs-80 pt-sm-100 pb-sm-100 pt-md-100 pb-md-100 pt-120 pb-130 overflow-hidden" style="background-image: url({% static 'consulting/assets/img/home/planning-success-bg.jpg' %});" >
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-sm-9">
@@ -393,24 +393,24 @@
 
                 {% for step  in  page.hero_process_step %}
                     <div class="col-xl-3 col-lg-4 col-sm-6">
-                    <div class="work-process__item work-process__item-two mb-30 text-center">
-                        <div class="icon-wrapper d-flex">
-                            <div class="icon">
-                                <i class="icon-research"></i>
+                        <div class="work-process__item work-process__item-two mb-30 text-center">
+                            <div class="icon-wrapper d-flex">
+                                <div class="icon">
+                                    <i class="icon-research"></i>
+                                </div>
+
+                                <button class="theme-btn color-pd_black" >{{step.value.title}}</button>
                             </div>
 
-                            <button class="theme-btn color-pd_black" >{{step.value.title}}</button>
-                        </div>
+                            <div class="text">
+                                <h6 class="title color-pd_black mb-15 mb-sm-10 mb-xs-5">{{step.value.subtitle}}</h6>
 
-                        <div class="text">
-                            <h6 class="title color-pd_black mb-15 mb-sm-10 mb-xs-5">{{step.value.subtitle}}</h6>
-
-                            <div class="description font-la">
-                                <p>{{step.value.description | richtext}}</p>
+                                <div class="description font-la">
+                                    <p>{{step.value.description | richtext}}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
                 {% endfor %}
                 
@@ -430,116 +430,41 @@
             <div class="row">
                 <div class="col-12">
                     <div class="our-team__content mb-60 mb-md-50 mb-sm-40 mb-xs-30 text-center">
-                        <span class="sub-title fw-500 color-red text-uppercase mb-sm-10 mb-xs-5 mb-15 d-block"><img src="{% static 'consulting/assets/img/home/line.svg' %}" class="img-fluid mr-10" alt=""> Our Member</span>
-                        <h2 class="title color-d_black">Professional Team</h2>
+                        <span class="sub-title fw-500 color-red text-uppercase mb-sm-10 mb-xs-5 mb-15 d-block"><img src="{% static 'consulting/assets/img/home/line.svg' %}" class="img-fluid mr-10" alt="">{{ page.hero_team_title}}</span>
+                        <h2 class="title color-d_black">{{ page.hero_team_desc}}</h2>
                     </div>
                 </div>
             </div>
 
-            <div class="row mb-minus-30">
-                <div class="col-xxl-3 col-lg-4 col-md-6">
-                    <div class="team-item team-item-three text-center mb-30 d-block overflow-hidden">
-                        <div class="media">
-                            <img src="{% static 'consulting/assets/img/team/team-item-1.jpg' %}" class="img-fluid" alt="">
+            <div class="row mb-minus-30 d-flex justify-content-center">
 
-                            <div class="social-profile">
-                                <ul>
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                </ul>
+                {% for member  in  page.hero_team_members %}
+                    <div class="col-xxl-3 col-lg-3 col-md-6">
+                        <div class="team-item team-item-three text-center mb-30 d-block overflow-hidden">
+                            <div class="media">
+                                <img src="{% static 'consulting/assets/img/team/team-item-1.jpg' %}" class="img-fluid" alt="">
+
+                                {% comment %} <div class="social-profile">
+                                    <ul>
+                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                    </ul>
+                                </div> {% endcomment %}
                             </div>
-                        </div>
 
-                        <div class="text d-flex align-items-center justify-content-center">
-                            <div class="left">
-                                <h5 class="title color-white">Stephen Larry</h5>
-                                <span class="position color-white font-la fw-500">Product Manager</span>
+                            <div class="text d-flex align-items-center justify-content-center">
+                                <div class="left">
+                                    <h5 class="title color-white">{{ member.value.title}}</h5>
+                                    <span class="position color-white font-la fw-500">{{ member.value.subtitle}}</span>
+                                </div>
                             </div>
+                        
                         </div>
-
-                        <a href="team-details.html" class="theme-btn text-uppercase">View Ddetails <i class="far fa-chevron-double-right"></i></a>
-                    </div>
-                </div><!-- team-item -->
-
-                <div class="col-xxl-3 col-lg-4 col-md-6">
-                    <div class="team-item team-item-three text-center mb-30 d-block overflow-hidden">
-                        <div class="media">
-                            <img src="{% static 'consulting/assets/img/team/team-item-1.jpg' %}" class="img-fluid" alt="">
-
-                            <div class="social-profile">
-                                <ul>
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="text d-flex align-items-center justify-content-center">
-                            <div class="left">
-                                <h5 class="title color-white">Nusrat Jahan</h5>
-                                <span class="position color-white font-la fw-500">Assistent Manager, Finance</span>
-                            </div>
-                        </div>
-
-                        <a href="team-details.html" class="theme-btn text-uppercase">View Ddetails <i class="far fa-chevron-double-right"></i></a>
-                    </div>
-                </div><!-- team-item -->
-
-                <div class="col-xxl-3 col-lg-4 col-md-6">
-                    <div class="team-item team-item-three text-center mb-30 d-block overflow-hidden">
-                        <div class="media">
-                            <img src="{% static 'consulting/assets/img/team/team-item-1.jpg' %}" class="img-fluid" alt="">
-
-                            <div class="social-profile">
-                                <ul>
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="text d-flex align-items-center justify-content-center">
-                            <div class="left">
-                                <h5 class="title color-white">Richard Paul</h5>
-                                <span class="position color-white font-la fw-500">Business Consulting</span>
-                            </div>
-                        </div>
-
-                        <a href="team-details.html" class="theme-btn text-uppercase">View Ddetails <i class="far fa-chevron-double-right"></i></a>
-                    </div>
-                </div><!-- team-item -->
-
-                <div class="col-xxl-3 col-lg-4 col-md-6">
-                    <div class="team-item team-item-three text-center mb-30 d-block overflow-hidden">
-                        <div class="media">
-                            <img src="{% static 'consulting/assets/img/team/team-item-1.jpg' %}" class="img-fluid" alt="">
-
-                            <div class="social-profile">
-                                <ul>
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="text d-flex align-items-center justify-content-center">
-                            <div class="left">
-                                <h5 class="title color-white">Elizabeth Linda</h5>
-                                <span class="position color-white font-la fw-500">Consulter Agency</span>
-                            </div>
-                        </div>
-
-                        <a href="team-details.html" class="theme-btn text-uppercase">View Ddetails <i class="far fa-chevron-double-right"></i></a>
-                    </div>
-                </div><!-- team-item -->
+                    </div><!-- team-item -->
+                {% endfor %}
+                
             </div>
         </div>
     </section>
@@ -551,8 +476,8 @@
             <div class="row align-items-center">
                 <div class="col-sm-9">
                     <div class="employee-friendly__content">
-                        <span class="sub-title fw-500 color-red text-uppercase mb-sm-10 mb-xs-5 mb-15 d-block"><img src="{% static 'consulting/assets/img/home/line.svg' %}" class="img-fluid mr-10" alt=""> testimonials</span>
-                        <h2 class="title color-pd_black">What people say About Us</h2>
+                        <span class="sub-title fw-500 color-red text-uppercase mb-sm-10 mb-xs-5 mb-15 d-block"><img src="{% static 'consulting/assets/img/home/line.svg' %}" class="img-fluid mr-10" alt="">{{ page.hero_testimonials}}</span>
+                        <h2 class="title color-pd_black">{{ page.hero_testimonials_desc}}</h2>
                     </div>
                 </div>
 
@@ -563,238 +488,54 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-12">
-                    <div class="testimonial-slider-home-1 mt-65 mt-md-50 mt-sm-40 mt-xs-30">
-                        <div class="slider-item">
-                            <div class="testimonial__item testimonial-item-three">
-                                <div class="testimonial__item-header d-flex justify-content-between align-items-center mb-30 mb-sm-25 mb-xs-20">
-                                    <div class="left d-flex align-items-center">
-                                        <div class="media overflow-hidden">
-                                            <img src="{% static 'consulting/assets/img/testimonial/testimonial-1.png' %}" class="img-fluid" alt="">
-                                        </div>
+            <div class="row">                                
+                    <div class="col-12">                
+                        <div class="testimonial-slider-home-1 mt-65 mt-md-50 mt-sm-40 mt-xs-30">
+                        
+                            {% for testimonials  in  page.hero_testimonials_cards %}
+                            <div class="slider-item">
+                                <div class="testimonial__item testimonial-item-three">
+                                    <div class="testimonial__item-header d-flex justify-content-between align-items-center mb-30 mb-sm-25 mb-xs-20">
+                                        <div class="left d-flex align-items-center">
+                                            <div class="media overflow-hidden">
+                                                <img src="{% static 'consulting/assets/img/testimonial/testimonial-1.png' %}" class="img-fluid" alt="">
+                                            </div>
 
-                                        <div class="meta">
-                                            <div class="starts">
-                                                <ul>
-                                                    <li><span></span></li>
-                                                    <li><span></span></li>
-                                                    <li><span></span></li>
-                                                    <li><span></span></li>
-                                                    <li><span></span></li>
-                                                </ul>
+                                            <div class="meta">
+                                                <div class="starts">
+                                                    <ul>
+                                                        <li><span></span></li>
+                                                        <li><span></span></li>
+                                                        <li><span></span></li>
+                                                        <li><span></span></li>
+                                                        <li><span></span></li>
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
+
+                                        <div class="right">
+                                            <i class="fal fa-quote-right"></i>
+                                        </div>
                                     </div>
 
-                                    <div class="right">
-                                        <i class="fal fa-quote-right"></i>
+                                    <div class="description font-la mb-25">
+                                        <p>{{testimonials.value.description}}</p>
                                     </div>
-                                </div>
 
-                                <div class="description font-la mb-25">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad minim veniam.</p>
-                                </div>
-
-                                <div class="testimonial__item-footer d-flex justify-content-between">
-                                    <div class="socail-link">
-                                        <span class="name">Bm Ashik <span>- Company Ceo</span></span>
+                                    <div class="testimonial__item-footer d-flex justify-content-between">
+                                        <div class="socail-link">
+                                            <span class="name">{{ testimonials.value.name}} <span>- {{ testimonials.value.position}}</span></span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+
+                        {% endfor %}        
                         </div>
-
-                        <div class="slider-item">
-                            <div class="testimonial__item testimonial-item-three">
-                                <div class="testimonial__item-header d-flex justify-content-between align-items-center mb-30 mb-sm-25 mb-xs-20">
-                                    <div class="left d-flex align-items-center">
-                                        <div class="media overflow-hidden">
-                                            <img src="{% static 'consulting/assets/img/testimonial/testimonial-1.png' %}" class="img-fluid" alt="">
-                                        </div>
-
-                                        <div class="meta">
-                                            <div class="starts">
-                                                <ul>
-                                                    <li><span></span></li>
-                                                    <li><span></span></li>
-                                                    <li><span></span></li>
-                                                    <li><span></span></li>
-                                                    <li><span></span></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="right">
-                                        <i class="fal fa-quote-right"></i>
-                                    </div>
-                                </div>
-
-                                <div class="description font-la mb-25">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad minim veniam.</p>
-                                </div>
-
-                                <div class="testimonial__item-footer d-flex justify-content-between">
-                                    <div class="socail-link">
-                                        <span class="name">Bm Ashik <span>- Company Ceo</span></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="slider-item">
-                            <div class="testimonial__item testimonial-item-three">
-                                <div class="testimonial__item-header d-flex justify-content-between align-items-center mb-30 mb-sm-25 mb-xs-20">
-                                    <div class="left d-flex align-items-center">
-                                        <div class="media overflow-hidden">
-                                            <img src="{% static 'consulting/assets/img/testimonial/testimonial-1.png' %}" class="img-fluid" alt="">
-                                        </div>
-
-                                        <div class="meta">
-                                            <div class="starts">
-                                                <ul>
-                                                    <li><span></span></li>
-                                                    <li><span></span></li>
-                                                    <li><span></span></li>
-                                                    <li><span></span></li>
-                                                    <li><span></span></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="right">
-                                        <i class="fal fa-quote-right"></i>
-                                    </div>
-                                </div>
-
-                                <div class="description font-la mb-25">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad minim veniam.</p>
-                                </div>
-
-                                <div class="testimonial__item-footer d-flex justify-content-between">
-                                    <div class="socail-link">
-                                        <span class="name">Bm Ashik <span>- Company Ceo</span></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="slider-item">
-                            <div class="testimonial__item testimonial-item-three">
-                                <div class="testimonial__item-header d-flex justify-content-between align-items-center mb-30 mb-sm-25 mb-xs-20">
-                                    <div class="left d-flex align-items-center">
-                                        <div class="media overflow-hidden">
-                                            <img src="{% static 'consulting/assets/img/testimonial/testimonial-1.png' %}" class="img-fluid" alt="">
-                                        </div>
-
-                                        <div class="meta">
-                                            <div class="starts">
-                                                <ul>
-                                                    <li><span></span></li>
-                                                    <li><span></span></li>
-                                                    <li><span></span></li>
-                                                    <li><span></span></li>
-                                                    <li><span></span></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="right">
-                                        <i class="fal fa-quote-right"></i>
-                                    </div>
-                                </div>
-
-                                <div class="description font-la mb-25">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad minim veniam.</p>
-                                </div>
-
-                                <div class="testimonial__item-footer d-flex justify-content-between">
-                                    <div class="socail-link">
-                                        <span class="name">Bm Ashik <span>- Company Ceo</span></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="slider-item">
-                            <div class="testimonial__item testimonial-item-three">
-                                <div class="testimonial__item-header d-flex justify-content-between align-items-center mb-30 mb-sm-25 mb-xs-20">
-                                    <div class="left d-flex align-items-center">
-                                        <div class="media overflow-hidden">
-                                            <img src="{% static 'consulting/assets/img/testimonial/testimonial-1.png' %}" class="img-fluid" alt="">
-                                        </div>
-
-                                        <div class="meta">
-                                            <div class="starts">
-                                                <ul>
-                                                    <li><span></span></li>
-                                                    <li><span></span></li>
-                                                    <li><span></span></li>
-                                                    <li><span></span></li>
-                                                    <li><span></span></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="right">
-                                        <i class="fal fa-quote-right"></i>
-                                    </div>
-                                </div>
-
-                                <div class="description font-la mb-25">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad minim veniam.</p>
-                                </div>
-
-                                <div class="testimonial__item-footer d-flex justify-content-between">
-                                    <div class="socail-link">
-                                        <span class="name">Bm Ashik <span>- Company Ceo</span></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="slider-item">
-                            <div class="testimonial__item testimonial-item-three">
-                                <div class="testimonial__item-header d-flex justify-content-between align-items-center mb-30 mb-sm-25 mb-xs-20">
-                                    <div class="left d-flex align-items-center">
-                                        <div class="media overflow-hidden">
-                                            <img src="{% static 'consulting/assets/img/testimonial/testimonial-1.png' %}" class="img-fluid" alt="">
-                                        </div>
-
-                                        <div class="meta">
-                                            <div class="starts">
-                                                <ul>
-                                                    <li><span></span></li>
-                                                    <li><span></span></li>
-                                                    <li><span></span></li>
-                                                    <li><span></span></li>
-                                                    <li><span></span></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="right">
-                                        <i class="fal fa-quote-right"></i>
-                                    </div>
-                                </div>
-
-                                <div class="description font-la mb-25">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad minim veniam.</p>
-                                </div>
-
-                                <div class="testimonial__item-footer d-flex justify-content-between">
-                                    <div class="socail-link">
-                                        <span class="name">Bm Ashik <span>- Company Ceo</span></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    
                     </div>
-                </div>
+                
             </div>
         </div>
     </section>
@@ -808,25 +549,6 @@
             <div class="container"></div>
         </div>
 
-        <div class="footer-top__box pb-100 pb-lg-80 pb-md-70 pb-sm-60 pb-xs-50">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="footer-top__box-wrapper d-flex flex-column flex-sm-row text-center text-sm-start justify-content-sm-between align-items-center" style="background-image: url({% static 'consulting/assets/img/footer/footer-box-bg.png' %});">
-                            <div class="text">
-                                <h3 class="title color-white">Get updated Informed to Subscribe our Newsletter</h3>
-                            </div>
-
-                            <div class="theme-btn__wrapper d-flex flex-column">
-                                <input type="email" class="theme-btn" placeholder="Your e-mail">
-                                <a href="#" class="theme-btn">Subscribe Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <div class="container">
             <div class="row justify-content-between">
                 <div class="col-md-6 col-xl-3">
@@ -836,16 +558,16 @@
                         </a>
 
                         <div class="description font-la color-white mb-40 mb-sm-30 mb-xs-25">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam</p>
+                            <p>{{ page.hero_footer_company_desc }}</p>
                         </div>
 
-                        <a href="#" class="theme-btn btn-red btn-md fw-600">Purchase Now <i class="far fa-chevron-double-right"></i></a>
+                        
                     </div>
                 </div> <!-- /.col-lg-3 - single-footer-wid -->
 
                 <div class="col-md-6 col-xl-2">
                     <div class="single-footer-wid pl-xl-10 pl-50">
-                        <h4 class="wid-title mb-30 color-white">Quick Link</h4>
+                        <h4 class="wid-title mb-30 color-white">Enlaces R&aacute;pidos</h4>
 
                         <ul>
                             <li><a href="about.html">About Company</a></li>
@@ -858,39 +580,11 @@
                     </div>
                 </div> <!-- /.col-lg-2 - single-footer-wid -->
 
-                <div class="col-md-6 col-xl-4">
-                    <div class="single-footer-wid recent_post_widget pl-xl-10 pl-65 pr-50 pr-xl-30">
-                        <h4 class="wid-title mb-30 color-white">Resent Post</h4>
-
-                        <div class="recent-post-list">
-                            <a href="blog.html" class="single-recent-post mb-20 pb-20 d-flex align-items-center">
-                                <div class="thumb">
-                                    <img src="{% static 'consulting/assets/img/footer/resent-post-1.jpg' %}" alt="">
-                                </div>
-
-                                <div class="post-data">
-                                    <h5 class="color-white mb-10 fw-600">Why Purpose-Driven Employers Succeed</h5>
-                                    <span class="color-white d-flex ailign-items-center"><i class="far fa-clock"></i>January 11, 2018</span>
-                                </div>
-                            </a>
-
-                            <a href="blog.html" class="single-recent-post mb-20 pb-20 d-flex align-items-center">
-                                <div class="thumb">
-                                    <img src="{% static 'consulting/assets/img/footer/resent-post-1.jpg' %}" alt="">
-                                </div>
-
-                                <div class="post-data">
-                                    <h5 class="color-white mb-10 fw-600">Saving Time Achieving Success in Business</h5>
-                                    <span class="color-white d-flex ailign-items-center"><i class="far fa-clock"></i>november 12, 2019</span>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div> <!-- /.col-lg-4 - single-footer-wid -->
+               
 
                 <div class="col-md-6 col-xl-3">
                     <div class="single-footer-wid">
-                        <h4 class="wid-title mb-30 color-white">Office Location</h4>
+                        <h4 class="wid-title mb-30 color-white">Ubicaci&oacute;n de nuestra Empresa</h4>
 
                         <div id="map" class="pinRed"></div>
                     </div>
@@ -902,13 +596,13 @@
             <div class="container">
                 <div class="footer-bottom-content d-flex flex-column flex-md-row justify-content-between align-items-center">
                     <div class="coppyright text-center text-md-start">
-                        &copy; 2022 <a href="index.html">Consulter</a> | All Rights Reserved by <a href="https://themeforest.net/user/rrdevs">RRDevs</a>
+                        &copy; {{page.hero_footer_year}} <a href="home.html">{{page.hero_footer_company_name}}</a> | Todos los derechos reservados 
                     </div>
 
                     <div class="footer-bottom-list last_no_bullet">
                         <ul>
-                            <li><a href="#">Terms & Conditions</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="{{page.hero_footer_terms_conditions}}">T&eacute;rminos y Condiciones</a></li>
+                            <li><a href="{{page.hero_footer_privacy_policy}}">Pol&iacute;ticas de privacidad</a></li>
                         </ul>
                     </div>
                 </div>
