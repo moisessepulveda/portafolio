@@ -1,1 +1,384 @@
 {% extends 'consulting/base.html' %}
+{% load static %}
+{% load wagtailcore_tags wagtailimages_tags home_extras %}
+
+
+{% block content %}
+
+  <!-- banner-home start -->
+  <section class="banner-home overflow-hidden pt-lg-100 pt-md-90 pt-sm-80 pt-xs-70">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-xl-6">
+                <div class="banner-home__content pb-lg-60 pb-md-50 pb-sm-45 pb-xs-40">
+                    <h6 class="sub-title color-white mb-20 mb-sm-15 mb-xs-10 d-inline-block"><span>{{ page.hero_over_title }}</span></h6>
+                    <h1 class="title color-white fw-bold mb-20 mb-sm-15 mb-xs-10">{{ page.hero_title | title }}</h1>
+
+                    <div class="description font-la color-white mb-45 mb-md-30 mb-sm-25 mb-xs-20">
+                        <p>{{ page.hero_title_description }}</p>
+                    </div>
+                    {% if page.hero_button_title_redirect %}
+                    <div class="theme-btn__wrapper d-flex flex-wrap">                            
+                        <a href="{% pageurl page.hero_button_title_redirect %}" class="theme-btn fw-600 btn-white-border">
+                            {{ page.hero_button_title }}<i class="far fa-chevron-double-right"></i></a>
+                    </div>
+                    {% endif %}
+                </div>
+
+            </div>
+
+            <div class="col-xl-6">
+                <div class="banner-home__media">
+                    <img src="{% static 'consulting/assets/img/banner/banner-start.png' %}" class="img-fluid start" alt="">
+                    {% image page.hero_image width-1000 class="img-fluid" %}
+                    <!--<img src="{% static 'consulting/assets/img/banner/banner-home.png' %}" class="img-fluid" alt="">-->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- banner-home end -->
+
+<div class="our-company-financial overflow-hidden">
+    <div class="overly">
+        <div class="container"></div>
+    </div>
+<!-- financial-area start -->
+<section class="financial pb-xs-80 pt-xs-80 pt-sm-100 pb-sm-100 pt-md-100 pb-md-100 pt-120 pb-120 overflow-hidden">
+    <div class="container">
+        <div class="row mb-minus-30">
+            <div class="col-xl-4 col-md-6">
+                <div class="financial__item d-flex mb-30" style="background-image: url({% static 'consulting/assets/img/home/financial__item-bg.png' %})">
+                    <div class="icon">
+                        <img src="{% static 'consulting/assets/img/icon/growth.svg' %}" alt="">
+                        <!-- <i class="fal fa-analytics"></i> -->
+                    </div>
+
+                    <div class="text">
+                        <h6 class="title color-pd_black mb-10 mb-xs-5">{{page.hero_agile_develop}}</h6>
+
+                        <div class="description font-la">
+                            <p>{{page.hero_agile_develop_desc}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-4 col-md-6">
+                <div class="financial__item d-flex mb-30" style="background-image: url({% static 'consulting/assets/img/home/financial__item-bg.png' %})">
+                    <div class="icon">
+                        <img src="{% static 'consulting/assets/img/icon/planning-1.svg' %}" alt="">
+                        <!-- <i class="fal fa-analytics"></i> -->
+                    </div>
+
+                    <div class="text">
+                        <h6 class="title color-pd_black mb-10 mb-xs-5">{{page.hero_information_security}}</h6>
+
+                        <div class="description font-la">
+                            <p>{{page.hero_information_security_desc}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-4 col-md-6">
+                <div class="financial__item d-flex mb-30" style="background-image: url({% static 'consulting/assets/img/home/financial__item-bg.png' %})">
+                    <div class="icon">
+                        <img src="{% static 'consulting/assets/img/icon/international.svg' %}" alt="">
+                        <!-- <i class="fal fa-analytics"></i> -->
+                    </div>
+
+                    <div class="text">
+                        <h6 class="title color-pd_black mb-10 mb-xs-5">{{page.hero_scalability}}</h6>
+
+                        <div class="description font-la">
+                            <p>{{page.hero_scalability_desc}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- financial-area end -->
+
+<!-- our-company start -->
+<section class="our-company pb-xs-80 pb-100 overflow-hidden">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-sm-6">
+                <div class="our-company__meida">
+                    <img src="{% static 'consulting/assets/img/about/our-company-1.jpg' %}" alt="" class="img-fluid">
+
+                    <div class="years-experience overflow-hidden bg-red mt-20 mt-sm-10 mt-xs-10 text-center">
+                        <div class="number mb-5 color-white">
+                            <span class="counter">8</span><sup>+</sup>
+                        </div>
+
+                        <h5 class="title color-white">Años de Experiencia</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-6">
+                <div class="our-company__meida border-radius">
+                    <img src="{% static 'consulting/assets/img/about/our-company-2.jpg' %}" alt="" class="img-fluid">
+
+                    <div class="horizental-bar bg-red"></div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="our-company__content mt-md-50 mt-sm-40 mt-xs-35">
+                    <span class="sub-title fw-500 color-red text-uppercase mb-sm-10 mb-xs-5 mb-20 d-block"><img src="{% static 'consulting/assets/img/home/line.svg' %}" class="img-fluid mr-10" alt="">{{page.hero_title_company}}</span>
+                    <h2 class="title color-pd_black mb-20 mb-sm-15 mb-xs-10">{{ page.hero_our_company}}</h2>
+
+                    <div class="descriiption font-la mb-30 mb-md-25 mb-sm-20 mb-xs-15">
+                        <p>{{ page.hero_our_company_desc }}</p>
+                    </div>
+
+                    <div class="client-feedback d-flex flex-column flex-sm-row">
+                        <div class="client-feedback__item client-feedback__item-two text-center">
+                            <div class="client-feedback__item-header">
+                                <span class="color-red font-la fw-600 text-uppercase">{{ page.hero_company_success}}</span>
+                            </div>
+
+                            <div class="client-feedback__item-body">
+                                <div class="number mb-10 mb-xs-5 color-pd_black fw-600">+<span class="counter">95</span>%</div>
+                                <div class="description font-la mb-10 mb-xs-5">
+                                    <p>{{page.hero_company_success_desc}}</p>
+                                </div>
+                                <div class="starts">
+                                    <ul>
+                                        <li><span></span></li>
+                                        <li><span></span></li>
+                                        <li><span></span></li>
+                                        <li><span></span></li>
+                                        <li><span></span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="client-feedback__item client-feedback__item-two text-center">
+                            <div class="client-feedback__item-header">
+                                <span class="color-red font-la fw-600 text-uppercase">{{page.hero_company_customer}}</span>
+                            </div>
+
+                            <div class="client-feedback__item-body">
+                                <div class="number mb-10 mb-xs-5 color-pd_black fw-600">+<span class="counter">4.7</span></div>
+                                <div class="description font-la mb-10 mb-xs-5">
+                                    <p>{{page.hero_company_customer_desc}}</p>
+                                </div>
+                                <div class="starts">
+                                    <ul>
+                                        <li><span></span></li>
+                                        <li><span></span></li>
+                                        <li><span></span></li>
+                                        <li><span></span></li>
+                                        <li><span></span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- our-company end -->
+</div>
+
+<!-- planning-success start -->
+<section class="planning-success pb-xs-80 pt-xs-80 pt-sm-100 pb-sm-100 pt-md-100 pb-md-100 pt-120 pb-130 overflow-hidden" style="background-image: url({% static 'consulting/assets/img/home/planning-success-bg.jpg' %});" >
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-sm-9">
+                <div class="planning-success__content mb-xs-35">
+                    <h2 class="title mb-20 mb-sm-15 mb-xs-10 color-white">{{page.hero_services_title}}</h2>
+
+                    <div class="description font-la color-white mb-40 mb-sm-30 mb-xs-20">
+                        <p>{{page.hero_services_desc}}</p>
+                    </div>
+
+                    {% if page.hero_button_services_redirect %}
+                    <a href="{% pageurl page.hero_button_services_redirect %}" class="theme-btn btn-sm btn-red">{{ page.hero_button_service}} <i class="far fa-chevron-double-right"></i></a>
+                    {% endif %}
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+</section>
+<!-- planning-success end -->
+
+
+
+
+
+<!-- work-process end -->
+<section class="work-process work-process-home bg-dark_red pb-xs-80 pb-sm-100 pb-md-100 pb-120 overflow-hidden">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="pricing__content mb-60 mb-sm-40 mb-xs-30 text-center">
+                    <span class="sub-title d-block fw-500 color-red text-uppercase mb-sm-10 mb-xs-5 mb-15"><img src="{% static 'consulting/assets/img/home/line.svg' %}" class="img-fluid mr-10" alt="">{{page.hero_process_title}}</span>
+                    <h2 class="title color-pd_black">{{page.hero_process_desc}}</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-minus-30 last_no_bullet">
+
+
+            {% for step  in  page.hero_process_step %}
+                <div class="col-xl-3 col-lg-4 col-sm-6">
+                    <div class="work-process__item work-process__item-two mb-30 text-center">
+                        <div class="icon-wrapper d-flex">
+                            <div class="icon">
+                                <i class="icon-research"></i>
+                            </div>
+
+                            <button class="theme-btn color-pd_black" >{{step.value.title}}</button>
+                        </div>
+
+                        <div class="text">
+                            <h6 class="title color-pd_black mb-15 mb-sm-10 mb-xs-5">{{step.value.subtitle}}</h6>
+
+                            <div class="description font-la">
+                                <p>{{step.value.description | richtext}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            {% endfor %}
+            
+
+
+
+           
+        </div>
+    </div>
+</section>
+<!-- work-process end -->
+
+
+<!-- our-team-home-1 start -->
+<section class="our-team our-team-home-1 bg-dark_red pb-xs-80 pt-xs-80 pt-sm-100 pb-sm-100 pt-md-100 pb-md-100 pt-120 pb-120 overflow-hidden">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="our-team__content mb-60 mb-md-50 mb-sm-40 mb-xs-30 text-center">
+                    <span class="sub-title fw-500 color-red text-uppercase mb-sm-10 mb-xs-5 mb-15 d-block"><img src="{% static 'consulting/assets/img/home/line.svg' %}" class="img-fluid mr-10" alt="">{{ page.hero_team_title}}</span>
+                    <h2 class="title color-d_black">{{ page.hero_team_desc}}</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-minus-30 d-flex justify-content-center">
+
+            {% for member  in  page.hero_team_members %}
+                <div class="col-xxl-3 col-lg-3 col-md-6">
+                    <div class="team-item team-item-three text-center mb-30 d-block overflow-hidden">
+                        <div class="media">
+                            <img src="{% static 'consulting/assets/img/team/team-item-1.jpg' %}" class="img-fluid" alt="">
+
+                            {% comment %} <div class="social-profile">
+                                <ul>
+                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                </ul>
+                            </div> {% endcomment %}
+                        </div>
+
+                        <div class="text d-flex align-items-center justify-content-center">
+                            <div class="left">
+                                <h5 class="title color-white">{{ member.value.title}}</h5>
+                                <span class="position color-white font-la fw-500">{{ member.value.subtitle}}</span>
+                            </div>
+                        </div>
+                    
+                    </div>
+                </div><!-- team-item -->
+            {% endfor %}
+            
+        </div>
+    </div>
+</section>
+<!-- our-team-home-1 end -->
+
+<!-- testimonial start -->
+<section class="testimonial pb-xs-80 pt-xs-80 pt-sm-100 pb-sm-100 pt-md-100 pb-md-100 pt-120 pb-120 overflow-hidden">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-sm-9">
+                <div class="employee-friendly__content">
+                    <span class="sub-title fw-500 color-red text-uppercase mb-sm-10 mb-xs-5 mb-15 d-block"><img src="{% static 'consulting/assets/img/home/line.svg' %}" class="img-fluid mr-10" alt="">{{ page.hero_testimonials}}</span>
+                    <h2 class="title color-pd_black">{{ page.hero_testimonials_desc}}</h2>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+               <div class="slider-controls slider-controls-two mt-xs-15">
+                    <div class="testimonial-slider-arrows d-flex align-content-center justify-content-sm-end"></div>
+               </div>
+            </div>
+        </div>
+
+        <div class="row">                                
+                <div class="col-12">                
+                    <div class="testimonial-slider-home-1 mt-65 mt-md-50 mt-sm-40 mt-xs-30">
+                    
+                        {% for testimonials  in  page.hero_testimonials_cards %}
+                        <div class="slider-item">
+                            <div class="testimonial__item testimonial-item-three">
+                                <div class="testimonial__item-header d-flex justify-content-between align-items-center mb-30 mb-sm-25 mb-xs-20">
+                                    <div class="left d-flex align-items-center">
+                                        <div class="media overflow-hidden">
+                                            <img src="{% static 'consulting/assets/img/testimonial/testimonial-1.png' %}" class="img-fluid" alt="">
+                                        </div>
+
+                                        <div class="meta">
+                                            <div class="starts">
+                                                <ul>
+                                                    <li><span></span></li>
+                                                    <li><span></span></li>
+                                                    <li><span></span></li>
+                                                    <li><span></span></li>
+                                                    <li><span></span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="right">
+                                        <i class="fal fa-quote-right"></i>
+                                    </div>
+                                </div>
+
+                                <div class="description font-la mb-25">
+                                    <p>{{testimonials.value.description}}</p>
+                                </div>
+
+                                <div class="testimonial__item-footer d-flex justify-content-between">
+                                    <div class="socail-link">
+                                        <span class="name">{{ testimonials.value.name}} <span>- {{ testimonials.value.position}}</span></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    {% endfor %}        
+                    </div>
+                
+                </div>
+            
+        </div>
+    </div>
+</section>
+{% endblock content %}

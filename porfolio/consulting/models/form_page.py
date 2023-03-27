@@ -26,8 +26,6 @@ class FormPage(AbstractEmailForm):
         landing page. E.g. you could return a redirect to a separate page.
         """
         context = self.get_context(request)
-        context["form_submission"] = form_submission
-        context['stream_data'] = self.success_body
         return TemplateResponse(
             request, self.get_landing_page_template(request), context
         )

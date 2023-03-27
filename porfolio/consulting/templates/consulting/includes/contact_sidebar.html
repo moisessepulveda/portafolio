@@ -1,0 +1,37 @@
+{% load static %}
+
+<div class="col-xl-4">
+    <div class="main-sidebar" data-sticky_column>
+        <div class="single-sidebar-widget mb-40 pt-30 pr-30 pb-40 pl-30 pl-xs-20 pr-xs-20">
+            <h4 class="wid-title mb-30 mb-xs-20 color-d_black text-capitalize">{{ page.side_block_title | title }}</h4>
+
+            <div class="widget_categories">
+                <ul>
+                    
+                    <li><a href="#">Contactanos a: +5693343223 <i
+                        class="fas fa-phone"></i></a></li>
+
+                        <li><a href="#">Escribenos a: ventas@offlinesolutions.cl <i
+                            class="fas fa-envelope"></i></a></li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="single-sidebar-widget have-any mb-40 pt-30 pr-30 pb-40 pl-30 pl-xs-20 pr-xs-20">
+
+            <div class="media">
+                <img src="{% static 'consulting/assets/img/services-details/have-any.png' %}" alt="">
+            </div>
+
+            <div class="have-any__item text-center"
+                 style="background-image: url({% static 'consulting/assets/img/services-details/have-any-bottom.png' %});">
+                <h4 class="wid-title mb-20 mb-xs-15 color-white text-capitalize">{{ page.contact_us_title }}</h4>
+
+                <a href="contact.html" class="theme-btn">Contáctanos <i
+                        class="fab fa-telegram-plane"></i></a>
+            </div>
+        </div>
+
+    </div>
+</div>
