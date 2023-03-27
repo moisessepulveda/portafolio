@@ -80,91 +80,8 @@
 
     <!-- welcome content start from here -->
 
-    <!-- header end -->
     {% include 'consulting/includes/header.html' %}
-
-    <!-- mobile menu - responsive menu  -->
-    <div class="mobile-nav mobile-nav-red">
-        <button type="button" class="close-nav">
-            <i class="fal fa-times-circle"></i>
-        </button>
-
-        <nav class="sidebar-nav">
-            <div class="navigation">
-                <div class="consulter-mobile-nav">
-                    <ul>
-                        <li>
-                            <a href="#">Home</a>
-                            
-                        </li>
-                        <li>
-                            <a href="services.html">Our Services</a>
-
-                            <ul>
-                                <li><a href="services.html">Our Services 1</a></li>
-                                <li><a href="services-2.html">Our Services 2</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a>Pages</a>
-
-                            <ul>
-                                <li><a href="about.html">About</a></li>
-                                <li><a href="contact.html">Contact</a></li>
-                                <li><a href="table.html">Pricing Table</a></li>
-                                <li><a href="team.html">Team</a></li>
-                                <li><a href="team-details.html">Team Details</a></li>
-                                <li><a href="services-details.html">Services Details</a></li>
-                                <li><a href="our-project-details.html">Our Project Details</a></li>
-                                <li><a href="blog-details.html">Blog Details</a></li>
-                                <li><a href="404.html">404</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="our-project.html">Portfolio</a>
-                        </li>
-                        <li>
-                            <a href="blog.html">Blog</a>
-
-                            <ul>
-                                <li><a href="blog.html">Blog 1</a></li>
-                                <li><a href="blog-standard.html">Blog 2</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="sidebar-nav__bottom mt-20">
-                    <div class="sidebar-nav__bottom-contact-infos mb-20">
-                        <h6 class="color-black mb-5">Contact Info</h6>
-
-                        <ul>
-                            <li><a><i class="fal fa-clock"></i> Mon – Fri: 8.00 – 18.00</a></li>
-                            <li><a href="mailto:consulter@example.com"><i class="icon-email"></i>consulter@example.com</a></li>
-                            <li>
-                                <a class="header-contact d-flex align-items-center">
-                                    <div class="icon">
-                                        <i class="icon-call"></i>
-                                        <!-- <img src="{% static 'consulting/assets/img/icon/phone-1.svg' %}" alt=""> -->
-                                    </div>
-                                    <div class="text">
-                                        <span class="font-la mb-5 d-block fw-500">Contact For Support</span>
-                                        <h5 class="fw-500">+123 556 8824</h5>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-
-                   
-                </div>
-            </div>
-        </nav>
-    </div>
-    <div class="offcanvas-overlay"></div> <!-- offcanvas-overlay -->
-    <!-- header end -->
-
-    <div class="header-gutter home"></div><!-- header end -->
+    
 
     <!-- banner-home start -->
     <section class="banner-home overflow-hidden pt-lg-100 pt-md-90 pt-sm-80 pt-xs-70">
@@ -178,11 +95,12 @@
                         <div class="description font-la color-white mb-45 mb-md-30 mb-sm-25 mb-xs-20">
                             <p>{{ page.hero_title_description }}</p>
                         </div>
-
+                        {% if page.hero_button_title_redirect %}
                         <div class="theme-btn__wrapper d-flex flex-wrap">                            
                             <a href="{% pageurl page.hero_button_title_redirect %}" class="theme-btn fw-600 btn-white-border">
                                 {{ page.hero_button_title }}<i class="far fa-chevron-double-right"></i></a>
                         </div>
+                        {% endif %}
                     </div>
 
                 </div>
@@ -362,7 +280,9 @@
                             <p>{{page.hero_services_desc}}</p>
                         </div>
 
+                        {% if page.hero_button_services_redirect %}
                         <a href="{% pageurl page.hero_button_services_redirect %}" class="theme-btn btn-sm btn-red">{{ page.hero_button_service}} <i class="far fa-chevron-double-right"></i></a>
+                        {% endif %}
                     </div>
                 </div>
 
@@ -544,71 +464,7 @@
    
 
     <!-- footer start -->
-    <footer class="footer-1 footer-3 overflow-hidden" style="background-image: url({% static 'consulting/assets/img/footer/footer-bg-3.png' %});">
-        <div class="overly">
-            <div class="container"></div>
-        </div>
-
-        <div class="container">
-            <div class="row justify-content-between">
-                <div class="col-md-6 col-xl-3">
-                    <div class="single-footer-wid widget-description">
-                        <a href="index.html" class="d-block mb-30 mb-xs-20">
-                            <img src="{% static 'consulting/assets/img/logo/footer-logo-3.png' %}" alt="">
-                        </a>
-
-                        <div class="description font-la color-white mb-40 mb-sm-30 mb-xs-25">
-                            <p>{{ page.hero_footer_company_desc }}</p>
-                        </div>
-
-                        
-                    </div>
-                </div> <!-- /.col-lg-3 - single-footer-wid -->
-
-                <div class="col-md-6 col-xl-2">
-                    <div class="single-footer-wid pl-xl-10 pl-50">
-                        <h4 class="wid-title mb-30 color-white">Enlaces R&aacute;pidos</h4>
-
-                        <ul>
-                            <li><a href="about.html">About Company</a></li>
-                            <li><a href="services.html">Our Services</a></li>
-                            <li><a href="services-2.html">Investor Presentation</a></li>
-                            <li><a href="table.html">Investor Career</a></li>
-                            <li><a href="team.html">Meet Our Team</a></li>
-                            <li><a href="contact.html">Support</a></li>
-                        </ul>
-                    </div>
-                </div> <!-- /.col-lg-2 - single-footer-wid -->
-
-               
-
-                <div class="col-md-6 col-xl-3">
-                    <div class="single-footer-wid">
-                        <h4 class="wid-title mb-30 color-white">Ubicaci&oacute;n de nuestra Empresa</h4>
-
-                        <div id="map" class="pinRed"></div>
-                    </div>
-                </div> <!-- /.col-lg-3 - single-footer-wid -->
-            </div>
-        </div>
-
-        <div class="footer-bottom overflow-hidden mt-20 mt-sm-15 mt-xs-10">
-            <div class="container">
-                <div class="footer-bottom-content d-flex flex-column flex-md-row justify-content-between align-items-center">
-                    <div class="coppyright text-center text-md-start">
-                        &copy; {{page.hero_footer_year}} <a href="home.html">{{page.hero_footer_company_name}}</a> | Todos los derechos reservados 
-                    </div>
-
-                    <div class="footer-bottom-list last_no_bullet">
-                        <ul>
-                            <li><a href="{{page.hero_footer_terms_conditions}}">T&eacute;rminos y Condiciones</a></li>
-                            <li><a href="{{page.hero_footer_privacy_policy}}">Pol&iacute;ticas de privacidad</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    {% include 'consulting/includes/footer.html' %}
     <!-- footer end -->
 
     <!--  ALl JS Plugins

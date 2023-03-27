@@ -1,0 +1,66 @@
+{% load static %}
+<footer class="footer-1 footer-3 overflow-hidden" style="background-image: url({% static 'consulting/assets/img/footer/footer-bg-3.png' %});">
+    <div class="overly">
+        <div class="container"></div>
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-md-6 col-xl-3">
+                <div class="single-footer-wid widget-description">
+                    <a href="index.html" class="d-block mb-30 mb-xs-20">
+                        <img src="{% static 'consulting/assets/img/logo/footer-logo-3.png' %}" alt="">
+                    </a>
+
+                    <div class="description font-la color-white mb-40 mb-sm-30 mb-xs-25">
+                        <p>{{ page.hero_footer_company_desc }}</p>
+                    </div>
+
+                    
+                </div>
+            </div> <!-- /.col-lg-3 - single-footer-wid -->
+
+            <div class="col-md-6 col-xl-2">
+                <div class="single-footer-wid pl-xl-10 pl-50">
+                    <h4 class="wid-title mb-30 color-white">Enlaces R&aacute;pidos</h4>
+
+                    <ul>
+                        <li><a href="about.html">About Company</a></li>
+                        <li><a href="services.html">Our Services</a></li>
+                        <li><a href="services-2.html">Investor Presentation</a></li>
+                        <li><a href="table.html">Investor Career</a></li>
+                        <li><a href="team.html">Meet Our Team</a></li>
+                        <li><a href="contact.html">Support</a></li>
+                    </ul>
+                </div>
+            </div> <!-- /.col-lg-2 - single-footer-wid -->
+
+           
+
+            <div class="col-md-6 col-xl-3">
+                <div class="single-footer-wid">
+                    <h4 class="wid-title mb-30 color-white">Ubicaci&oacute;n de nuestra Empresa</h4>
+
+                    <div id="map" class="pinRed"></div>
+                </div>
+            </div> <!-- /.col-lg-3 - single-footer-wid -->
+        </div>
+    </div>
+
+    <div class="footer-bottom overflow-hidden mt-20 mt-sm-15 mt-xs-10">
+        <div class="container">
+            <div class="footer-bottom-content d-flex flex-column flex-md-row justify-content-between align-items-center">
+                <div class="coppyright text-center text-md-start">
+                    &copy; {{page.hero_footer_year}} <a href="home.html">{{page.hero_footer_company_name}}</a> | Todos los derechos reservados 
+                </div>
+
+                <div class="footer-bottom-list last_no_bullet">
+                    <ul>
+                        <li><a href="{{page.hero_footer_terms_conditions}}">T&eacute;rminos y Condiciones</a></li>
+                        <li><a href="{{page.hero_footer_privacy_policy}}">Pol&iacute;ticas de privacidad</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
