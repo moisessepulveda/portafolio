@@ -181,7 +181,7 @@ MEDIA_URL = '/media/'
 
 # Wagtail settings
 
-WAGTAIL_SITE_NAME = "porfolio"
+WAGTAIL_SITE_NAME = "Offline Solutions"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

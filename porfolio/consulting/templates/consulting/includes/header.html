@@ -1,4 +1,4 @@
-{% load static %}
+{% load static wagtailimages_tags home_extras %}
 <header class="header header-1 header-3">
         <div class="top-header d-none d-xl-block">
             <div class="container">
@@ -21,9 +21,8 @@
                     <div class="col-8">
                         <div class="header-cta d-flex justify-content-end">
                             <ul>
-                                <li><a><i class="icon-phone"></i> (+212)-226-3126</a></li>
-                                <li><a href="mailto:consulter@example.com"><i class="icon-email"></i>consulter@example.com</a></li>
-                                <li><a><i class="fal fa-clock"></i> Mon – Fri: 8.00 – 18.00</a></li>
+                                <li><a><i class="icon-phone"></i> {{ settings.consulting.GeneralInfo.contact_phone }}</a></li>
+                                <li><a href="mailto:{{ settings.consulting.GeneralInfo.contact_email }}"><i class="icon-email"></i>{{ settings.consulting.GeneralInfo.contact_email }}</a></li>
                             </ul>
                         </div>
                     </div>
@@ -39,7 +38,14 @@
                             <div class="header-logo">
                                 <div class="logo">
                                     <a href="index.html">
-                                        <img src="{% static 'consulting/assets/img/logo/logo-3.png' %}" alt="logo">
+                                        {% with logo=settings.consulting.GeneralInfo.enterprise_logo %}
+                                            {% if logo %}
+                                                {% image logo width-300 alt="logo" %}
+                                            {% else %}
+                                                <h4>else</h4>
+                                                <img src="{% static 'consulting/assets/img/logo/logo-3.png' %}" alt="logo">
+                                            {% endif %}
+                                        {% endwith %}
                                     </a>
                                 </div>
                             </div>
