@@ -24,9 +24,7 @@ WAGTAILADMIN_BASE_URL = 'http://example.com'
 INSTALLED_APPS = [
     'home',
     'search',
-    'simplelist',
     'consulting',
-    'techblog',
 
     'wagtail.contrib.forms',
     # 'wagtail.contrib.redirects',
@@ -82,7 +80,6 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'wagtail.contrib.settings.context_processors.settings',
-                'simplelist.context_processors.main_menu',
                 'consulting.context_processors.consulting_menu',
             ],
         },

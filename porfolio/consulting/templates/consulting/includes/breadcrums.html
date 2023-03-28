@@ -1,0 +1,14 @@
+{% load wagtailcore_tags %}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        {% with home_page=settings.consulting.GeneralInfo.home_page %}
+        {% if home_page %}
+            <li class="breadcrumb-item"><a href="{% pageurl home_page %}">Inicio</a></li>
+        {% else %}
+            <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+        {% endif %}
+        {% endwith %}
+        <li class="breadcrumb-item active" aria-current="page">{{ page.title | capfirst }}</li>
+    </ol>
+</nav>

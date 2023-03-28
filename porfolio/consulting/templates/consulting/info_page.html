@@ -17,12 +17,7 @@
                     </div>
                 </div>
 
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">{{ page.title | capfirst }}</li>
-                    </ol>
-                </nav>
+                {% include 'consulting/includes/breadcrums.html' %}
             </div>
 
             <div class="col-md-6">
@@ -48,7 +43,7 @@
             {% include 'consulting/includes/contact_sidebar.html' %}
         </div>
     </div>
-    
+
 </section>
 <!-- team-area end -->
 
