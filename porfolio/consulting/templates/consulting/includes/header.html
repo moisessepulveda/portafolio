@@ -1,4 +1,6 @@
 {% load static wagtailimages_tags home_extras %}
+{% load wagtailcore_tags %}
+
 <header class="header header-1 header-3">
         <div class="top-header d-none d-xl-block">
             <div class="container">
@@ -9,10 +11,20 @@
 
                             <div class="social-profile">
                                 <ul>
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                    {% with general_settings=settings.consulting.GeneralInfo %}
+                                        {% if general_settings.facebook_link %}
+                                        <li><a href="{{ general_settings.facebook_link }}"><i class="fab fa-facebook-f"></i></a></li>
+                                        {% endif %}
+                                        {% if general_settings.twitter_link %}
+                                        <li><a href="{{ general_settings.twitter_link }}"><i class="fab fa-twitter"></i></a></li>
+                                        {% endif %}
+                                        {% if general_settings.instagram_link %}
+                                            <li><a href="{{ general_settings.instagram_link }}"><i class="fab fa-instagram"></i></a></li>
+                                        {% endif %}
+                                        {% if general_settings.linkedin_link %}
+                                            <li><a href="{{ general_settings.linkedin_link }}"><i class="fab fa-linkedin-in"></i></a></li>
+                                        {% endif %}
+                                        {% endwith %}
                                 </ul>
                             </div>
                         </div>
@@ -37,16 +49,23 @@
                         <div class="d-flex align-items-center justify-content-between">
                             <div class="header-logo">
                                 <div class="logo">
-                                    <a href="index.html">
-                                        {% with logo=settings.consulting.GeneralInfo.enterprise_logo %}
-                                            {% if logo %}
+                                    
+                                    {% with logo=settings.consulting.GeneralInfo.enterprise_logo %}
+                                        {% if logo %}
+                                        {% with home_page=settings.consulting.GeneralInfo.home_page%}
+                                            {% if home_page %}
+                                            <a href="{% pageurl home_page %}">
                                                 {% image logo width-300 alt="logo" %}
+                                            </a>
                                             {% else %}
-                                                <h4>else</h4>
-                                                <img src="{% static 'consulting/assets/img/logo/logo-3.png' %}" alt="logo">
+                                                {% image logo width-300 alt="logo" %}
                                             {% endif %}
                                         {% endwith %}
-                                    </a>
+                                        {% else %}
+                                            <img src="{% static 'consulting/assets/img/logo/logo-3.png' %}" alt="logo">
+                                        {% endif %}
+                                    {% endwith %}
+                                    
                                 </div>
                             </div>
 
@@ -112,8 +131,11 @@
                                 </div>
                                 {% endcomment %}
 
-
-                                <a href="contact.html" class="header-btn">Obten una cotización <i class="far fa-chevron-double-right"></i></a>
+                                {% with contact_page=settings.consulting.GeneralInfo.contact_page %}
+                                    {% if contact_page %}
+                                    <a href="{% pageurl contact_page %}" class="header-btn">Obten una cotización <i class="far fa-chevron-double-right"></i></a>
+                                    {% endif %}
+                                {% endwith %}
                                 <div class="mobile-nav-bar d-block ml-3 ml-sm-5 d-xl-none">
                                     <div class="mobile-nav-wrap">
                                         <div id="hamburger">

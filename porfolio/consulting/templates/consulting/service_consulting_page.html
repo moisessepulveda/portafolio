@@ -91,19 +91,22 @@
                             </ul>
                         </div>
                     </div>
-
+                    
                     <div class="single-sidebar-widget have-any mb-40 pt-30 pr-30 pb-40 pl-30 pl-xs-20 pr-xs-20">
 
                         <div class="media">
-                            <img src="{% static 'consulting/assets/img/services-details/have-any.png' %}" alt="">
+                            <img src="{% static 'consulting/assets/img/contactus.jpg' %}" alt="">
                         </div>
-
-                        <div class="have-any__item text-center"
-                             style="background-image: url({% static 'consulting/assets/img/services-details/have-any-bottom.png' %});">
-                            <h4 class="wid-title mb-20 mb-xs-15 color-white text-capitalize">{{ page.contact_us_title }}</h4>
-
-                            <a href="contact.html" class="theme-btn">Contáctanos <i
-                                    class="fab fa-telegram-plane"></i></a>
+            
+                        <div class="have-any__item text-center">
+                            <h4 class="wid-title mb-20 mb-xs-15 color-white text-capitalize">Contáctanos</h4>
+                            
+                            {% with contact_page=settings.consulting.GeneralInfo.contact_page %}
+                            {% if contact_page %}
+                                <a href="{% pageurl contact_page %}" class="theme-btn">Contáctanos <i
+                                        class="fab fa-telegram-plane"></i></a>
+                            {% endif %}
+                            {% endwith %}
                         </div>
                     </div>
 

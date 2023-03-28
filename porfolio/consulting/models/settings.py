@@ -18,6 +18,15 @@ class GeneralInfo(BaseSetting):
         related_name='+',
         verbose_name='Logo de la empresa',
     )
+    home_page = models.ForeignKey(
+        'wagtailcore.Page', 
+        null=True, 
+        on_delete=models.SET_NULL,
+        related_name='+',
+        verbose_name='Página de inicio',
+        blank=True,
+        help_text='¿Cual será la página principal del sitio?'
+    )
     enterprise_name = models.CharField(verbose_name='Nombre de la empresa', max_length=100)
     contact_phone = models.CharField(verbose_name='Teléfono de contacto', max_length=100)
     contact_email = models.EmailField(verbose_name='Correo de contacto', max_length=255)
@@ -38,6 +47,25 @@ class GeneralInfo(BaseSetting):
         on_delete=models.SET_NULL,
         related_name='+',
         verbose_name='Página de contacto',
+        blank=True,
+    )
+
+
+    terms_page = models.ForeignKey(
+        'wagtailcore.Page', 
+        null=True, 
+        on_delete=models.SET_NULL,
+        related_name='+',
+        verbose_name='Página de términos y condiciones',
+        blank=True,
+    )
+
+    privacy_page = models.ForeignKey(
+        'wagtailcore.Page', 
+        null=True, 
+        on_delete=models.SET_NULL,
+        related_name='+',
+        verbose_name='Página de privacidad',
         blank=True,
     )
 

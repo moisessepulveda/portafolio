@@ -1,5 +1,5 @@
 {% load static %}
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags wagtailimages_tags home_extras %}
 
 <footer class="footer-1 footer-3 overflow-hidden" style="background-image: url({% static 'consulting/assets/img/footer/footer-bg-3.png' %});">
     <div class="overly">
@@ -11,11 +11,17 @@
             <div class="col-md-6 col-xl-3">
                 <div class="single-footer-wid widget-description">
                     <a href="index.html" class="d-block mb-30 mb-xs-20">
-                        <img src="{% static 'consulting/assets/img/logo/footer-logo-3.png' %}" alt="">
+                        {% with logo=settings.consulting.GeneralInfo.enterprise_logo %}
+                            {% if logo %}
+                                {% image logo width-300 alt="logo" %}
+                            {% else %}
+                                <img src="{% static 'consulting/assets/img/logo/logo-3.png' %}" alt="logo">
+                            {% endif %}
+                        {% endwith %}
                     </a>
 
                     <div class="description font-la color-white mb-40 mb-sm-30 mb-xs-25">
-                        <p>{{ settings.consulting.GeneralInfo.footer_resume }}</p>
+                        <p>{{ settings.consulting.GeneralInfo.footer_resume|default:'' }}</p>
                     </div>
 
                     
@@ -50,13 +56,24 @@
         <div class="container">
             <div class="footer-bottom-content d-flex flex-column flex-md-row justify-content-between align-items-center">
                 <div class="coppyright text-center text-md-start">
-                    &copy; {{page.hero_footer_year}} <a href="home.html">{{page.hero_footer_company_name}}</a> | Todos los derechos reservados 
+                    &copy; {% now "Y" %}
+                    {% with home_page=settings.consulting.GeneralInfo.home_page %}
+                        {% if home_page %}
+                        <a href="{% pageurl home_page %}">{{ settings.consulting.GeneralInfo.enterprise_name|default:'' }}</a> | Todos los derechos reservados 
+                        {% else %}
+                        <a href="/">{{ settings.consulting.GeneralInfo.enterprise_name|default:'' }}</a> | Todos los derechos reservados 
+                        {% endif %}
+                     {% endwith %}
                 </div>
 
                 <div class="footer-bottom-list last_no_bullet">
                     <ul>
-                        <li><a href="{{page.hero_footer_terms_conditions}}">T&eacute;rminos y Condiciones</a></li>
-                        <li><a href="{{page.hero_footer_privacy_policy}}">Pol&iacute;ticas de privacidad</a></li>
+                        {% if settings.consulting.GeneralInfo.terms_page %}
+                        <li><a href="{% pageurl settings.consulting.GeneralInfo.terms_page %}">T&eacute;rminos y Condiciones</a></li>
+                        {% endif %}
+                        {% if settings.consulting.GeneralInfo.privacy_page %}
+                        <li><a href="{% pageurl settings.consulting.GeneralInfo.privacy_page %}">Pol&iacute;ticas de privacidad</a></li>
+                        {% endif %}                    
                     </ul>
                 </div>
             </div>
