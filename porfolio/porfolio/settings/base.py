@@ -16,7 +16,6 @@ import os
 SECRET_KEY = 'BB68112EBA479FC9AB933ECFC676CFE40469EAA1'
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
-DEBUG = os.environ('DEBUG', False)
 WAGTAILADMIN_BASE_URL = 'http://example.com'
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
