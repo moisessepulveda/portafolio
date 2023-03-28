@@ -110,12 +110,6 @@ class HomeConsulting(Page):
 
 
 
-    # --- footer sección 8 --------------------------------------------------------------------------------------------------------
-    hero_footer_terms_conditions    = models.CharField(max_length=150, verbose_name='link terminos y condiciones', default='')
-    hero_footer_privacy_policy      = models.CharField(max_length=150, verbose_name='link politica de privacidad', default='')
-    hero_footer_year                = models.CharField(max_length=4, verbose_name='año actual', default='')
-    hero_footer_company_name        = models.CharField(max_length=100, verbose_name='nombre empresa', default='')
-    hero_footer_company_desc        = models.CharField(max_length=300, verbose_name='descripcion empresa', default='')
     
 
 
@@ -185,13 +179,4 @@ class HomeConsulting(Page):
             FieldPanel('hero_testimonials_cards'),      
 
         ], heading='seccion 7: Testimonios'),
-
-        MultiFieldPanel([
-            FieldPanel('hero_footer_terms_conditions'),
-            FieldPanel('hero_footer_privacy_policy'),      
-            FieldPanel('hero_footer_year'),      
-            FieldPanel('hero_footer_company_name'),      
-            FieldPanel('hero_footer_company_desc'),      
-
-        ], heading='seccion 8: footer'),
     ]

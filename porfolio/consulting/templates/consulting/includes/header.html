@@ -73,29 +73,30 @@
                                 <div class="main-menu">
                                     <ul>
                                         <li>
-                                            <a href="#">Inicio</a>
+                                            {% with home_page=settings.consulting.GeneralInfo.home_page %}
+                                                {% if home_page %}
+                                                    <a href="{% pageurl home_page %}">Inicio</a>
+                                                {% else %}
+                                                    <a href="#">Inicio</a>
+                                                {% endif %}
+                                            {% endwith %}
                                         </li>
                                         <li>
-                                            <a href="services.html">Nuestros servicios</a>
+                                            <a href="#">Nuestros servicios</a>
 
                                             <ul>
-                                                <li><a href="services.html">Our Services 1</a></li>
-                                                <li><a href="services-2.html">Our Services 2</a></li>
+                                                {% for sm in services_menu %}
+                                                <li><a href="{% pageurl sm %}">{{ sm.title | capfirst }}</a></li>
+                                                {% endfor %}
                                             </ul>
                                         </li>
                                         <li>
                                             <a>Páginas</a>
-
+                                            
                                             <ul>
-                                                <li><a href="about.html">About</a></li>
-                                                <li><a href="contact.html">Contact</a></li>
-                                                <li><a href="table.html">Pricing Table</a></li>
-                                                <li><a href="team.html">Team</a></li>
-                                                <li><a href="team-details.html">Team Details</a></li>
-                                                <li><a href="services-details.html">Services Details</a></li>
-                                                <li><a href="our-project-details.html">Our Project Details</a></li>
-                                                <li><a href="blog-details.html">Blog Details</a></li>
-                                                <li><a href="404.html">404</a></li>
+                                                {% for pm in pages_menu %}
+                                                    <li><a href="{% pageurl pm %}">{{ pm.title | capfirst }}</a></li>
+                                                {% endfor %}
                                             </ul>
                                         </li>
                                         {% comment %}
@@ -161,41 +162,30 @@
                 <div class="consulter-mobile-nav">
                     <ul>
                         <li>
-                            <a href="#">Home</a>
-                            
+                            {% with home_page=settings.consulting.GeneralInfo.home_page %}
+                                {% if home_page %}
+                                    <a href="{% pageurl home_page %}">Inicio</a>
+                                {% else %}
+                                    <a href="#">Inicio</a>
+                                {% endif %}
+                            {% endwith %}
                         </li>
                         <li>
-                            <a href="services.html">Our Services</a>
+                            <a href="#">Nuestros servicios</a>
 
                             <ul>
-                                <li><a href="services.html">Our Services 1</a></li>
-                                <li><a href="services-2.html">Our Services 2</a></li>
+                                {% for sm in services_menu %}
+                                    <li><a href="{% pageurl sm %}">{{ sm.title | capfirst }}</a></li>
+                                {% endfor %}
                             </ul>
                         </li>
                         <li>
-                            <a>Pages</a>
-
+                            <a>Páginas</a>
+                                            
                             <ul>
-                                <li><a href="about.html">About</a></li>
-                                <li><a href="contact.html">Contact</a></li>
-                                <li><a href="table.html">Pricing Table</a></li>
-                                <li><a href="team.html">Team</a></li>
-                                <li><a href="team-details.html">Team Details</a></li>
-                                <li><a href="services-details.html">Services Details</a></li>
-                                <li><a href="our-project-details.html">Our Project Details</a></li>
-                                <li><a href="blog-details.html">Blog Details</a></li>
-                                <li><a href="404.html">404</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="our-project.html">Portfolio</a>
-                        </li>
-                        <li>
-                            <a href="blog.html">Blog</a>
-
-                            <ul>
-                                <li><a href="blog.html">Blog 1</a></li>
-                                <li><a href="blog-standard.html">Blog 2</a></li>
+                                {% for pm in pages_menu %}
+                                    <li><a href="{% pageurl pm %}">{{ pm.title | capfirst }}</a></li>
+                                {% endfor %}
                             </ul>
                         </li>
                     </ul>
@@ -203,11 +193,10 @@
 
                 <div class="sidebar-nav__bottom mt-20">
                     <div class="sidebar-nav__bottom-contact-infos mb-20">
-                        <h6 class="color-black mb-5">Contact Info</h6>
+                        <h6 class="color-black mb-5">Información de contacto</h6>
 
                         <ul>
-                            <li><a><i class="fal fa-clock"></i> Mon – Fri: 8.00 – 18.00</a></li>
-                            <li><a href="mailto:consulter@example.com"><i class="icon-email"></i>consulter@example.com</a></li>
+                            <li><a href="mailto:{{ settings.consulting.GeneralInfo.contact_email }}"><i class="icon-email"></i>{{ settings.consulting.GeneralInfo.contact_email }}</a></li>
                             <li>
                                 <a class="header-contact d-flex align-items-center">
                                     <div class="icon">
@@ -215,8 +204,8 @@
                                         <!-- <img src="{% static 'consulting/assets/img/icon/phone-1.svg' %}" alt=""> -->
                                     </div>
                                     <div class="text">
-                                        <span class="font-la mb-5 d-block fw-500">Contact For Support</span>
-                                        <h5 class="fw-500">+123 556 8824</h5>
+                                        <span class="font-la mb-5 d-block fw-500">Llámanos</span>
+                                        <h5 class="fw-500">{{ settings.consulting.GeneralInfo.contact_phone}}</h5>
                                     </div>
                                 </a>
                             </li>

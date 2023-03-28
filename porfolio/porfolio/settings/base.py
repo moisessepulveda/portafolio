@@ -83,6 +83,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'wagtail.contrib.settings.context_processors.settings',
                 'simplelist.context_processors.main_menu',
+                'consulting.context_processors.consulting_menu',
             ],
         },
     },
