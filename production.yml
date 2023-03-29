@@ -6,9 +6,6 @@ services:
     build: ./porfolio
     ports:
       - "8000:8000"
-    links:
-      - postgres:postgres
-      - redis:redis
     volumes:
       - ./data/static:/application/static
       - ./data/media:/application/media
