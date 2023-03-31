@@ -55,7 +55,7 @@
                                         {% with home_page=settings.consulting.GeneralInfo.home_page%}
                                             {% if home_page %}
                                             <a href="{% pageurl home_page %}">
-                                                {% image logo height-50 alt="logo" %}
+                                                {% image logo width-800 alt="logo" style="height:50px; width: auto" %}
                                             </a>
                                             {% else %}
                                                 {% image logo width-300 alt="logo" %}

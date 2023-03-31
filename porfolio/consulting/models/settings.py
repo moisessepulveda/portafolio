@@ -18,6 +18,15 @@ class GeneralInfo(BaseSetting):
         related_name='+',
         verbose_name='Logo de la empresa',
     )
+    enterprise_logo_footer = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        verbose_name='Logo de la empresa en el pie de página',
+        help_text='Este logo aparecerá en el pie de página de todo el sitio'
+    )
     home_page = models.ForeignKey(
         'wagtailcore.Page', 
         null=True, 

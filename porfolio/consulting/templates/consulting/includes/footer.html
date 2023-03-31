@@ -11,9 +11,9 @@
             <div class="col-md-6 col-xl-3">
                 <div class="single-footer-wid widget-description">
                     <a href="index.html" class="d-block mb-30 mb-xs-20">
-                        {% with logo=settings.consulting.GeneralInfo.enterprise_logo %}
+                        {% with logo=settings.consulting.GeneralInfo.enterprise_logo_footer %}
                             {% if logo %}
-                                {% image logo width-300 alt="logo" %}
+                                {% image logo width-800 alt="logo" style="width:auto; height: 100px" %}
                             {% else %}
                                 <img src="{% static 'consulting/assets/img/logo/logo-3.png' %}" alt="logo">
                             {% endif %}
