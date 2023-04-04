@@ -9157,7 +9157,7 @@ xs device
 }
 
 #scrollUp {
-  right: 20px;
+  left: 20px;
   bottom: 20px;
   height: 40px;
   width: 40px;
