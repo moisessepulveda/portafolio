@@ -39,11 +39,14 @@
 }
 .whatsapp_bottom_legend {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    width: 200px;
+    bottom: 10px;
+    right: 5px;
     z-index: 1000;
     text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff,
                1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
+    justify-content: center;
+    display: flex;
 }
 </style>
 {% with whatsapp_number=settings.consulting.GeneralInfo.whatsapp_number whatsapp_text=settings.consulting.GeneralInfo.whatsapp_text %}
@@ -55,7 +58,7 @@
         </div>
         {% if whatsapp_text %} 
         <div class="whatsapp_bottom_legend">
-            <span>{{ whatsapp_text }}</span>
+            <span style="text-align: center">{{ whatsapp_text }}</span>
         </div>
         {% endif %}
     {% endif %}
