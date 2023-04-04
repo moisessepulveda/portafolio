@@ -33,6 +33,13 @@
 </section>
 <!-- page-banner end -->
 
+<style>
+    input::placeholder, textarea::placeholder {
+        font-weight: bold;
+        opacity: 0.5;
+    }
+</style>
+
 <!-- team-area start -->
 <section
         class="services-details pb-xs-80 pt-xs-80 pt-sm-100 pb-sm-100 pt-md-100 pb-md-100 pt-120 pb-115 overflow-hidden">
@@ -50,6 +57,9 @@
                                 {% for field in form %}
                                     {% if field.field.widget.input_type in text_input_array.split %}
                                         <div class="single-personal-info">
+                                            {% if field.field.widget.input_type == 'select' %}
+                                                <label for=""> {{ field.label }}</label>
+                                            {% endif %}
                                             {{ field }}
                                             <small style="margin-left: 0.5rem; color: #999">{{ field.help_text }}</small>
                                         </div>
@@ -58,9 +68,14 @@
                                             <label for=""> {{ field.label }}</label>
                                             {{ field }}
                                         </div>
+                                    {% elif field.field.widget.attrs.textarea %}
+                                        {{field}}
                                     {% endif %}
                                 {% endfor %}
+                                <br>
+                                <br>
                                 <div class="d-flex justify-content-end">
+
                                     <button type="submit"
                                             class="theme-btn btn-sm btn-red">{{ page.form_button_text }}</button>
                                 </div>

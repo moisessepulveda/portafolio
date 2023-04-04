@@ -51,6 +51,8 @@ class FormPage(AbstractEmailForm):
                     isinstance(field.widget, widgets.EmailInput),
                     isinstance(field.widget, widgets.Textarea)]):
                 field.widget.attrs.update({'placeholder': field.label})
+            if isinstance(field.widget, widgets.Textarea):
+                field.widget.attrs.update({'textarea': True})
 
         return form
 
