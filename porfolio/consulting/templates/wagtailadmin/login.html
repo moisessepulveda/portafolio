@@ -1,11 +1,11 @@
 {% extends "wagtailadmin/login.html" %}
 
-{% load wagtailadmin_tags %}
+{% load wagtailadmin_tags static %}
 
 {% block branding_login %}Offline Solutions{% endblock %}
 
 {% block branding_logo %}
         <div class="login-logo">
-            <img class="login-logo-img" alt="" src="{% versioned_static 'wagtailadmin/images/wagtail-logo.svg' %}" />
+            <img class="login-logo-img" alt="" src="{% static 'consulting/assets/img/shortlogo3.png' %}" />
         </div>
 {% endblock %}

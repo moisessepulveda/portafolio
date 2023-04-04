@@ -1,0 +1,1 @@
+from .wagtail_hooks import global_admin_css
