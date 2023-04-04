@@ -48,6 +48,12 @@ class GeneralInfo(BaseSetting):
     linkedin_link = models.URLField(verbose_name='Enlace a linked in', null=True, blank=True)
 
     footer_resume = models.TextField(verbose_name='Reseña al pie de página', null=True, blank=True)
+
+
+    whatsapp_number = models.CharField(verbose_name='Número de Whatsapp', null=True, blank=True,
+                    max_length=50)
+    whatsapp_text = models.CharField(verbose_name='Texto whatsapp', null=True, blank=True, 
+                    max_length=50)
     
 
     contact_page = models.ForeignKey(
