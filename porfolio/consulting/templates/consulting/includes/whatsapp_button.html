@@ -2,24 +2,28 @@
 
 <style>
     #whatsappbutton {
-        width: 70px;
-        height: 70px;
+        width: 200px;
+        height: 200px;
         position: fixed;
         z-index: 1000;
-        right: 50px;
-        bottom: 50px;
+        right: 10px;
+        bottom: 10px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
     }
-.pulse_whatsapp {
-	background: black;
-	border-radius: 50%;
-	margin: 10px;
-	height: 20px;
-	width: 20px;
+    .pulse_whatsapp {
+        background: black;
+        border-radius: 50%;
+        margin: 10px;
+        height: 20px;
+        width: 20px;
 
-	box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
-	transform: scale(1);
-	animation: pulse 2s infinite;
-}
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+        transform: scale(1);
+        animation: pulse 2s infinite;
+    }
 
 @keyframes pulse {
 	0% {
@@ -51,15 +55,18 @@
 </style>
 {% with whatsapp_number=settings.consulting.GeneralInfo.whatsapp_number whatsapp_text=settings.consulting.GeneralInfo.whatsapp_text %}
     {% if whatsapp_number %}
-        <div id="whatsappbutton" class="pulse_whatsapp">
-            <a href="https://wa.me/{{whatsapp_number}}" target="_blank">
-                <img src="{% static 'consulting/assets/img/whatsapp.png' %}" alt="whatsapp" width="70" height="70">        
-            </a>
+        <div id="whatsappbutton">
+            <div style="width: 70px; height: 70px;" class="pulse_whatsapp">
+                <a href="https://wa.me/{{ whatsapp_number }}" target="_blank">
+                    <img src="{% static 'consulting/assets/img/whatsapp.png' %}" alt="whatsapp" width="70" height="70">
+                </a>
+            </div>
+            {% if whatsapp_text %}
+            <div>
+                <span>{{ whatsapp_text }}</span>
+            </div>
+            {% endif %}
         </div>
-        {% if whatsapp_text %} 
-        <div class="whatsapp_bottom_legend">
-            <span style="text-align: center">{{ whatsapp_text }}</span>
-        </div>
-        {% endif %}
+        
     {% endif %}
 {% endwith %}
