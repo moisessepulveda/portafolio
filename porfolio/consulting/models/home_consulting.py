@@ -102,6 +102,7 @@ class HomeConsulting(Page):
     hero_testimonials_desc   = models.CharField(max_length=100, verbose_name='testimonios descripción', default='')
     hero_testimonials_cards   = StreamField([
         ('card', blocks.StructBlock([
+            ('image', ImageChooserBlock(label="Imagen")),
             ('name', blocks.TextBlock(label='nombre')),
             ('position', blocks.TextBlock(label='cargo')),
             ('description', blocks.RichTextBlock(label='descripcion')),

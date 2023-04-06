@@ -341,7 +341,11 @@
                                 <div class="testimonial__item-header d-flex justify-content-between align-items-center mb-30 mb-sm-25 mb-xs-20">
                                     <div class="left d-flex align-items-center">
                                         <div class="media overflow-hidden">
-                                            <img src="{% static 'consulting/assets/img/testimonial/testimonial-1.png' %}" class="img-fluid" alt="">
+                                            {% if testimonials.value.image %}
+                                                {% image testimonials.value.image width-100 style="object-fit:cover" class="img-fluid" %}
+                                            {% else %}
+                                                <img src="{% static 'consulting/assets/img/testimonial/testimonial-1.png' %}" class="img-fluid" alt="">
+                                            {% endif %}
                                         </div>
 
                                         <div class="meta">
