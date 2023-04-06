@@ -44,9 +44,17 @@
 
             <div class="col-md-6 col-xl-3">
                 <div class="single-footer-wid">
-                    <h4 class="wid-title mb-30 color-white">Ubicaci&oacute;n de nuestra Empresa</h4>
-
-                    <div id="map" class="pinRed"></div>
+                    <h4 class="wid-title mb-30 color-white">Contáctanos</h4>
+                    <div style="background-color: #ed0c48; padding: 10px">
+                        <h6 class="color-white" style="font-size: 0.9em;">
+                            <img src="{% static 'consulting/assets/img/email-small.png' %}" alt="email" width="30"> |
+                            {{ settings.consulting.GeneralInfo.contact_email }}</h6>
+                        <br>
+                        <h6 class="color-white" style="font-size: 0.9em;">
+                            <img src="{% static 'consulting/assets/img/llamada-telefonica.png' %}" alt="email" width="30">
+                            |
+                            {{ settings.consulting.GeneralInfo.contact_phone }}</h6>
+                    </div>
                 </div>
             </div> <!-- /.col-lg-3 - single-footer-wid -->
         </div>

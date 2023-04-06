@@ -4,7 +4,7 @@ from wagtail.core import blocks
 from wagtail.admin.panels import MultiFieldPanel, FieldPanel, FieldRowPanel
 from wagtail.core.fields import StreamField
 from wagtail.models import Page
-
+from wagtail.images.blocks import ImageChooserBlock
 
 
 class HomeConsulting(Page):
@@ -89,6 +89,7 @@ class HomeConsulting(Page):
     hero_team_desc     = models.CharField(max_length=100, verbose_name='nuestro equipo descripción', default='')
     hero_team_members  = StreamField([
         ('card', blocks.StructBlock([
+            ('image', ImageChooserBlock(label="Imagen")),
             ('title', blocks.TextBlock(label='titulo')),
             ('subtitle', blocks.TextBlock(label='subtitulo')),
             ('description', blocks.RichTextBlock(label='descripcion')),
@@ -107,12 +108,6 @@ class HomeConsulting(Page):
             ])
         )
      ],  null=True, use_json_field=True)
-
-
-
-    
-
-
 
 
     content_panels = Page.content_panels + [
@@ -168,8 +163,7 @@ class HomeConsulting(Page):
         MultiFieldPanel([
             FieldPanel('hero_team_title'),
             FieldPanel('hero_team_desc'),
-            FieldPanel('hero_team_members'),        
-
+            FieldPanel('hero_team_members'),
         ], heading='seccion 6: Miembros del equipo'),
 
 
