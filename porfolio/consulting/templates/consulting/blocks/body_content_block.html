@@ -1,11 +1,10 @@
 {% load wagtailcore_tags wagtailimages_tags  %}
 
 {% load static %}
-{% for element in value %}
 
+{% for element in value %}
     {% if element.block_type == 'h1' or element.block_type == 'h2' or element.block_type == 'h3' or element.block_type == 'h4' %}
         <{{ element.block_type }}>{{ element.value }}</{{ element.block_type }}>
-        <br>
         <br>
     {% elif element.block_type == 'image' %}
         <h2>imagen?</h2>
