@@ -81,7 +81,12 @@ class Employee(ClusterableModel):
 
     full_name.short_description = 'Nombre completo'
 
-
+    # contact
+    personal_email = models.EmailField(null=True, blank=True, verbose_name='Correo personal')
+    enterprise_email = models.EmailField(null=True, blank=True, verbose_name='Correo corporativo')
+    phone = models.CharField(max_length=25, null=True, blank=True, verbose_name='Teléfono')
+    
+    
     # educational info
     university = models.CharField(max_length=100, null=True, blank=True, verbose_name='Universidad/Instituto')
     carrer = models.CharField(max_length=200, null=True, blank=True, verbose_name='Carrera')
@@ -101,6 +106,13 @@ class Employee(ClusterableModel):
                 FieldPanel('mother_last_name'),
             ]),
         ], heading='Nombres'),
+        MultiFieldPanel([
+            FieldRowPanel([
+                FieldPanel('personal_email'),
+                FieldPanel('enterprise_email'),
+            ]),
+            FieldPanel('phone'),
+        ], heading='Información de contacto'),
         FieldPanel('image'),
     ]
 
