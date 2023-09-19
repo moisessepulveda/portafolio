@@ -84,16 +84,13 @@ class HomeConsulting(Page):
      ],  null=True, use_json_field=True)
 
 
-    # --- Miembros del equipo  sección 6 --------------------------------------------------------------------------------------------------------
-    hero_team_title    = models.CharField(max_length=100, verbose_name='titulo nuestro equipo', default='')
-    hero_team_desc     = models.CharField(max_length=100, verbose_name='nuestro equipo descripción', default='')
-    hero_team_members  = StreamField([
+    # --- Clients sección 6 --------------------------------------------------------------------------------------------------------
+    hero_clients_title    = models.CharField(max_length=100, verbose_name='Nuestros clientes', default='')
+    hero_clients_desc     = models.CharField(max_length=100, verbose_name='que han confiado en nosotros', default='', null=True, blank=True)
+    hero_clients_members  = StreamField([
         ('card', blocks.StructBlock([
             ('image', ImageChooserBlock(label="Imagen")),
-            ('title', blocks.TextBlock(label='titulo')),
-            ('subtitle', blocks.TextBlock(label='subtitulo')),
-            ('description', blocks.RichTextBlock(label='descripcion')),
-            ])
+        ])
         )
      ],  null=True, use_json_field=True)
 
@@ -162,10 +159,10 @@ class HomeConsulting(Page):
         ], heading='seccion 5:  Nuestra forma de trabajo '),
 
         MultiFieldPanel([
-            FieldPanel('hero_team_title'),
-            FieldPanel('hero_team_desc'),
-            FieldPanel('hero_team_members'),
-        ], heading='seccion 6: Miembros del equipo'),
+            FieldPanel('hero_clients_title'),
+            FieldPanel('hero_clients_desc'),
+            FieldPanel('hero_clients_members'),
+        ], heading='seccion 6: Nuestros clientes'),
 
 
         MultiFieldPanel([

@@ -272,40 +272,24 @@
         <div class="row">
             <div class="col-12">
                 <div class="our-team__content mb-60 mb-md-50 mb-sm-40 mb-xs-30 text-center">
-                    <span class="sub-title fw-500 color-red text-uppercase mb-sm-10 mb-xs-5 mb-15 d-block"><img src="{% static 'consulting/assets/img/home/line.svg' %}" class="img-fluid mr-10" alt="">{{ page.hero_team_title}}</span>
-                    <h2 class="title color-d_black">{{ page.hero_team_desc}}</h2>
+                    <span class="sub-title fw-500 color-red text-uppercase mb-sm-10 mb-xs-5 mb-15 d-block"><img src="{% static 'consulting/assets/img/home/line.svg' %}" class="img-fluid mr-10" alt="">{{ page.hero_clients_title}}</span>
+                    
+                    {% if page.hero_clients_desc %}
+                        <h2 class="title color-d_black">{{ page.hero_clients_desc}}</h2>
+                    {% endif %}
                 </div>
             </div>
         </div>
 
         <div class="row mb-minus-30 d-flex justify-content-center">
 
-            {% for member  in  page.hero_team_members %}
-                <div class="col-xxl-3 col-lg-3 col-md-6">
-                    <div class="team-item team-item-three text-center mb-30 d-block overflow-hidden">
-                        <div class="media">
-                            {% image member.value.image width-300 style="object-fit: cover" %}
-                            <img src="{% static 'consulting/assets/img/team/team-item-1.jpg' %}" class="img-fluid" alt="">
+            {% for member  in  page.hero_clients_members %}
+                
+                <div class="col-xs-12 col-md-6 col-lg-3 justify-content-center mt-100">
+                    {% image member.value.image width-300 style="object-fit: contain" %}
+                </div>
+                
 
-                            {% comment %} <div class="social-profile">
-                                <ul>
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                </ul>
-                            </div> {% endcomment %}
-                        </div>
-
-                        <div class="text d-flex align-items-center justify-content-center">
-                            <div class="left">
-                                <h5 class="title color-white">{{ member.value.title}}</h5>
-                                <span class="position color-white font-la fw-500">{{ member.value.subtitle}}</span>
-                            </div>
-                        </div>
-                    
-                    </div>
-                </div><!-- team-item -->
             {% endfor %}
             
         </div>
