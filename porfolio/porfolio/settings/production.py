@@ -15,27 +15,19 @@ DATABASES = {
     }
 }
 
-LOGGING_CONFIG = None
-
 LOGGING = {
-    "version": 1,
-    "disable_existing_loggers": False,
-    "handlers": {
-        "console": {
-            "class": "loguru._handler.StreamHandler",
-            "level": "DEBUG",
-        },
-        "file": {
-            "class": "loguru._handler._AsyncFileHandler",
-            "filename": "/var/log/myapp.log",
-            "level": "DEBUG",
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'django_debug.log',
         },
     },
-    "loggers": {
-        "django": {
-            "handlers": ["console", "file"],
-            "level": "INFO",
-        },
+    'root': {
+        'handlers': ['file'],
+        'level': 'DEBUG',
     },
 }
 
