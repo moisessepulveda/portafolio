@@ -15,6 +15,30 @@ DATABASES = {
     }
 }
 
+LOGGING_CONFIG = None
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "class": "loguru._handler.StreamHandler",
+            "level": "DEBUG",
+        },
+        "file": {
+            "class": "loguru._handler._AsyncFileHandler",
+            "filename": "/var/log/myapp.log",
+            "level": "DEBUG",
+        },
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["console", "file"],
+            "level": "INFO",
+        },
+    },
+}
+
 try:
     from .local import *
 except ImportError:
