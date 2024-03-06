@@ -7,3 +7,12 @@
 #### then execute the following commands:
 
 `docker-compose -f production.yml up --build -d`
+
+
+#### Para compilar los recursos es necesario ejecutar el siguiente comando
+
+`npx mix`
+
+#### Para compilar los recursos para producción es necesario ejecutar el siguiente comando
+
+`npx mix build production`

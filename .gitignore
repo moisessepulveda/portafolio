@@ -110,3 +110,4 @@ media/
 .idea/*
 data/*
 porfolio/data
+node_modules
